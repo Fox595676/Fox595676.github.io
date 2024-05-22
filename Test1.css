@@ -1,0 +1,141 @@
+\
+@font-face {
+  font-family: AovelSansRounded;
+  src: url("AovelSansRounded-rdDL.ttf");
+
+  font-family: GreatVibes;
+  src: url("GreatVibes-A7yL.otf");
+}
+
+body {
+	font-family: AovelSansRounded;
+	color: white;
+	font-size: 30px;
+	text-align: center;
+}
+
+center {
+	text-align: center;
+}
+
+
+table,tr,td,tablehead {
+	margin: auto;
+	border: solid gold;
+	background: black;
+	padding: 10px;
+	border-collapse: collapse;
+}
+
+th {
+	border: solid gold;
+	padding: 10px;
+	border-collapse: collapse;
+}
+
+fancy {
+	font-family: GreatVibes;
+}
+
+dim {
+	filter: brightness(40%);
+}
+
+R {
+	color: red;
+}
+
+O {
+	color: orange;
+}
+
+Y {
+	color: yellow;
+}
+
+G {
+	color: green;
+}
+
+Bu {
+	color: blue;
+}
+
+LB {
+	color: skyblue;
+}
+
+Pu {
+	color: purple;
+}
+
+Pi {
+	color: pink;
+}
+
+Bl {
+	color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*	Classes	*/
+
+.shakey:hover {
+	animation: shake 0.5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* ChatGPT wrote this bit and I spent half an hour trying to achieve this effect. I feel useless. */
+
+.sizeup {
+  transform: scale(100%); /* Initial scale */
+  transition: transform 0.5s; /* Transition effect for smooth scaling */
+}
+
+.sizeup:hover {
+  transform: scale(125%); /* Scale on hover */
+}
+
+
+/*
+
+Here's my shitty broken code
+
+.sizeup {
+	animation: bigger 0.5s reverse;
+}
+
+.sizeup:hover {
+	animation: bigger 0.5s forwards;
+
+}
+
+@keyframes bigger {
+	0% {transform: scale(100%);}
+	100% {transform: scale(125%);}
+}
+
+*/
