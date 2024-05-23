@@ -41,6 +41,8 @@ dim {
 	filter: brightness(40%);
 }
 
+/* All the COLOURSS ehheheh */
+
 R {
 	color: red;
 }
@@ -78,15 +80,6 @@ Bl {
 }
 
 
-
-
-
-
-
-
-
-
-
 /*	Classes	*/
 
 .shakey:hover {
@@ -108,6 +101,19 @@ Bl {
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
+.groovy:hover {
+	animation: groovy 0.5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes groovy {
+  0% { transform: translate(0px, 1px); }
+  25% { transform: translate(20px, -1px); }
+  50% { transform: translate(0px, 1px); }
+  75% { transform: translate(-20px, -1px); }
+  100% { transform: translate(0px, 1px); }
+}
+
 /* ChatGPT wrote this bit and I spent half an hour trying to achieve this effect. I feel useless. */
 
 .sizeup {
@@ -116,7 +122,11 @@ Bl {
 }
 
 .sizeup:hover {
-  transform: scale(125%); /* Scale on hover */
+  transform: scale(110%); /* Scale on hover */
+}
+
+.flash:hover {
+  color:green
 }
 
 
