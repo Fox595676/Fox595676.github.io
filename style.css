@@ -1,0 +1,51 @@
+body {
+  font-family: sans-serif;
+  color: white;
+  font-size: 18px;
+  background-color: #0a0e12;
+  margin: 0;
+  padding: 20px;
+}
+
+header, section, footer {
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  color: #ff9800;
+}
+
+ul, ol {
+  padding-left: 20px;
+}
+
+a {
+  color: #42a5f5;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hr.dashed {
+  border-top: 1px dashed #bbb;
+}
+
+hr.dotted {
+  border-top: 1px dotted #bbb;
+}
+
+hr.solid {
+  border-top: 1px solid #bbb;
+}
+
+hr.rounded {
+  border-top: 1px solid #bbb;
+  border-radius: 5px;
+}
