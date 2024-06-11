@@ -1,9 +1,3 @@
-# Echo VR v63+ Installation Guide
-
-Go to this website on your Quest!
-
----
-
 ## Echo VR (v987566) v63+ Installation Guide
 
 ---
