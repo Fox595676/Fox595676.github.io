@@ -3,6 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- I used GPT for the video element alignment :3 -->
+    <style>
+    .iframe-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .iframe-container {
+        position: relative;
+        width: 45%; /* Adjusted to fit side by side with some margin */
+        padding-bottom: 25.3125%; /* 16:9 aspect ratio (16/9 = 1.7777, 100/1.7777 = 56.25) */
+        margin: 10px;
+        overflow: hidden;
+        background: #000;
+        box-sizing: border-box;
+    }
+
+    .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    @media (max-width: 768px) {
+        .iframe-container {
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio for mobile */
+            margin: 5px 0;
+        }
+    }
+</style>
+    
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="echo.png">
     <title>Echo VR v63+ Installation Guide</title>
@@ -15,8 +52,16 @@
     <center>
     <i>The video tutorials are a little bodged, I messed up and let the browser close therefore losing my Echo ZIP download, hence the split recording.
     <p>Leave it running to let it download completely to continue!</i></p>
-    <iframe src="https://drive.google.com/file/d/1y07ZWd6Nz5bIrucVLDkV5W-8xF4GwxjS/preview" width="640" height="360" allow="autoplay"></iframe>
-    <iframe src="https://drive.google.com/file/d/1BnVW2sHH2Ix0YVUpVDhsBZXciGtBfI0i/preview" width="640" height="360" allow="autoplay"></iframe>
+    
+    <div class="iframe-wrapper">
+        <div class="iframe-container">
+            <iframe src="https://drive.google.com/file/d/1y07ZWd6Nz5bIrucVLDkV5W-8xF4GwxjS/preview" allow="autoplay"></iframe>
+        </div>
+        <div class="iframe-container">
+            <iframe src="https://drive.google.com/file/d/1BnVW2sHH2Ix0YVUpVDhsBZXciGtBfI0i/preview" allow="autoplay"></iframe>
+        </div>
+    </div>
+
     </center>
     <section>
         <h2>Prerequisites</h2>
