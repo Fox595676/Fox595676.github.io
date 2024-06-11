@@ -1,5 +1,5 @@
 ## Echo VR (v987566) v63+ Installation Guide
-This ins't updated as much as the [website](https://fox595676.github.io), so I recommend using that instead!
+This isn't updated as much as the [website](https://fox595676.github.io), so I recommend using that instead!
 ---
 
 *The video tutorials are a little bodged, I messed up and let the browser close therefore losing my Echo ZIP download, hence the split recording.*
