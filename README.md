@@ -1,4 +1,4 @@
-> This is auto generated based on the website, I suggest using that instead
+> This is most likely outdated and auto generated based on the website, I suggest using that instead
 # Echo VR (v987566) v63+ Installation Guide
 
 > <i>The videos are outdated, the links now download directly and the guide looks vastly different, but all the steps should be pretty much the same. They're also quite bodged, I messed up and let the browser close therefore losing my Echo ZIP download, hence the split recording.
