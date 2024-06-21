@@ -3,42 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- I used GPT for the video element alignment :3 -->
-    <style>
-    .iframe-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .iframe-container {
-        position: relative;
-        width: 45%; /* Adjusted to fit side by side with some margin */
-        padding-bottom: 25.3125%; /* 16:9 aspect ratio (16/9 = 1.7777, 100/1.7777 = 56.25) */
-        margin: 10px;
-        overflow: hidden;
-        background: #000;
-        box-sizing: border-box;
-    }
-
-    .iframe-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-    }
-
-    @media (max-width: 768px) {
-        .iframe-container {
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio for mobile */
-            margin: 5px 0;
-        }
-    }
-</style>
     
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="echo.png">
