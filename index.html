@@ -6,145 +6,195 @@
     
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="echo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Echo VR v63+ Installation Guide</title>
 </head>
-<body>
+<body id="top"> <!-- I figured out going to the top without JS :3 -->
+
+    <!-- I decided to remove it it's a bit unnecessary lol -->
+    <!-- <div id="progress-bar"></div> -->
+    
     <header style="text-align:center;">
-        Go to this website on your Quest!<hr>
-        <h2>Echo VR (v987566) v63+ Installation Guide</h2>
-    </header>
-    <section>
-        <h2>📽 Video Tutorial</h2>
-        <p>This is to go in tandem with the text!</p>
-    <center>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/DZGBRHVuJpE?si=Nsxn36Y-kOQ9iUrw" allow="autoplay" allowfullscreen frameBorder="0"></iframe>
-        </div>
-    </center>
-
-    <section>
-        <h2>✅ Prerequisites</h2>
-        <ul>
-            <li>A Quest 2 or 3 (Other Android headsets untested)</li>
-            <li>Developer mode</li>
-            <li>Join <a href="https://discord.gg/echo-vr-lounge" target="_blank">this server</a> on Discord - don't leave it as it manages your account
-            <p>PLEASE don't ask for help until you really need it, go to <b>#help-base</b> first!
-            <li>You don’t need a computer!</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>⬇️ Download the following files</h2>
-        <ul>
-            <li><a href="/APK/ZArchiver.apk" download>ZArchiver</a> - used for root access file management and installing APKs</li>
-            <li><a href="/APK/EvolveLauncher.apk" download>Evolve Launcher</a> - Used to open Android Settings and launch Echo</li>
-            <li><a href="/APK/Shizuku.apk" download>Shizuku</a> - to get root access</li>
-            <li><a href="https://docs.google.com/uc?export=download&id=1mgK3w4yZUXkO1g-5TQBtZWfJxfVVcQSL" target="_blank">EchoQuest.zip</a> - Echo VR APK and OBB - the most important part!</li>
-            
-            <li>If you haven't previously owned Echo, join <a href="https://discord.gg/xF9hf6N2vY" target="_blank">this server</a> and react to the message, then use the APK from the DM you receive instead of the APK inside the ZIP (although you still need to download it for the OBB file).</li>
-            <i>(not shown in video tutorial)</i>
-        </ul>
-    </section>
-
-    <section>
-        <h2>📥 Installation Method</h2>
-        <p>You can skip this if you already have an installation method and just install the APKS :3</p>
-        Or follow <a href="https://youtu.be/tvOfS1wUsvw?si=cdF2ROAD6RAep1CF&t=63" target="_blank">this guide</a> (sorry about the quality I couldn't find any better ones)
-        <ol>
-            <li>Download <a href="https://www.meta.com/en-gb/experiences/mobile-vr-station/3887008398005125/" target="_blank">Mobile VR Station</a> from the Quest store and open it</li>
-            <li>Click on “Configuration Wizard” > “Show All Options” > “Configure Scoped Storage”</li>
-            <li>Click on “Step 1: Request Access”</li>
-            <li>At the top, click on “Quest 2”, or in other words go to the base directory</li>
-            <img src="MVSDIR.jpg" style="width:500px;">
-            <li>Click on “Downloads”</li>
-            <li>Click on the enlarge icon on all the APKS (including the Echo VR APK) then Continue and Install - clicking open doesn’t do anything!</li>
-        </ol>
-    </section>
-    
-    <section>
-        <h2>🔓 Enabling a second developer mode and using Shizuku to get root access</h2>
-        <ol>
-            <li>Open Evolve Launcher</li>
-            <li>Click on the bottom right button, then click on "Device Settings"</li>
-            <li>Scroll down to About Phone, then spam “Build Number” the bottom until you become a developer!</li>
-            <li>Go back and click on “System” then “Developer Options”.</li
-            <li>Turn on USB Debugging if it’s off, then turn on Wireless Debugging below it and click on the text.</li>
-            <li>Put this tab into split screen and open Shizuku</li>
-            <li>Click on “Pair” in the wireless option, then enter the code on the second screen after clicking on add new device.</li>
-            <li>You’re now able to access root files! Try to keep both these apps open (although don't worry if it's a pain, it's not the end of the world if they get minimised, just don't click the X!) and move on to the next step :)</li>
-        </ol>
-    </section>
-    
-    <section>
-        <h2>🚚 Move the OBB File</h2>
-        <ol>
-            <li>Open ZArchiver while keeping Shizuku open and click on settings at the top right, then ROOT, then click on the first option and set it to “Shizuku”. Turn on all the toggles after that!</li>
-            <li>Go to your Downloads in ZArchiver while keeping everything open and find the zipped file, then extract it into your downloads.</li>
-
-            <li>
-                <ul>
-                    <p>If you previously owned Echo:</p>
-                    <li>Go into your newly created folder and install the Echo APK by clicking on it then install.</li>
-                
-                    <p>If you haven't previously owned Echo:</p>
-                    <li>Use the APK you downloaded at the beginning from <a href="https://discord.gg/xF9hf6N2vY" target="_blank">this server</a> instead of the one inside the ZIP.</li>
-                </ul>
-            </li>
-            
-            <li>Once it's done installing, hold down on the OBB file and click copy (or move if you're confident, it’s just in case something goes wrong!)</li>
-            <li>Click on the top file named .. and go back to the directory where Downloads is. Navigate to “Android” > “obb”</li>
-            <li>A prompt should pop up in Shizuku, click on Allow, then click on "obb" in ZArchiver again.</li>
-            <li>Go to “com.readyatdawn.r15” and click on the paste button in the bottom right (even if it says access denied)</li>
-            <i>If you can't find it, create it yourself!</i>
-            <li>There you go! You should have succesfully installed Echo VR!</li> 
-    </section>
-
-    <section>
-        <h2>🥳 Launch Echo VR</h2> 
-        <p><b>DO NOT CLICK ON “Restore”!!!!</b></p>
-        For me it crashed a few times so if it does for you, simply force quit it, by going back to Android Settings and clicking on Apps then “Force Quit” on Echo VR or restarting your quest. If it continues crashing, try moving the OBB file again!</p>
-        <ul>
-            <li>Go to the server, then go to any typeable channel, then type in /link and click on the command that shows up, then enter your code!</li>
-        </ul>
-    </section>
-        
-    <footer>
+        <p>Go to this website on your Quest!</p>
         <hr>
-        <p>👵 Old stuff ignore this lol:</p>
-        <ul>
-            <li><a href="/APK/Activity Launcher_2.0.0.apk" download>Activity Launcher</a> - to open the Android Settings</li>
-            Open Android Launcher
-            <p>
-            Scroll down until you find "Settings", if you have Roblox installed, it should be directly below it. Not “Android System”!
-            <p>
-            <li>Click on it, and press the first item in the list, then "Launch Activity"</li>
-        	<p>
-            <li><a href="/APK/ZArchiver_1.0.9.apk" download>ZArchiver</a></li>
-            <li><a href="https://raw.githubusercontent.com/Fox595676/Fox595676.github.io/aba42b6471ca450ef777e5278719affb8f75fa37/APK/ActivityLauncher_2.0.0.apk" download>Download Activity Launcher APK</a></li>
-            <li><a href="https://archive.org/details/echo-vr-v-4987566-apk-obb-quest-2">Echo VR - the most important part! Download the APK file, or copy the torrent link and add it in FDM</a></li>
-            <li><a href="https://www.freedownloadmanager.org/download-fdm-for-android.htm">FDM x64 - optional, to download the torrent file instead to if you’re Australian and have shitty internet</a></li>
-            <li><a href="https://drive.google.com/file/d/1yjC3D4TTelqOiZFTmVR311vM8Rr9mc9z/view?usp=drivesdk" target="_blank">Echo VR files</a></li>
-        </ul>
-        <i>The videos are outdated, the links now download directly and the guide looks vastly different, but all the steps should be pretty much the same.
-        
-        <div class="iframe-wrapper">
-            <div class="iframe-container">
-                <iframe src="https://drive.google.com/file/d/1y07ZWd6Nz5bIrucVLDkV5W-8xF4GwxjS/preview" allow="autoplay" allowfullscreen frameBorder="0"></iframe>
+        <h2>Echo VR (v987566) v63+ Installation Guide</h2>
+   </header>
+
+    
+    <!-- Sidebar for contents yayy -->
+    <div class="container" style="text-align:left;">
+        <aside class="sidebar" style="text-align:center;">
+            <nav id="toc">
+                <h2><a href="#top"><span class="material-symbols-outlined">arrow_upward</span></a>Contents</h2>
+                <ul>
+                    <li><a href="#prerequisites">📋 Prerequisites</a></li>
+                    <li><a href="#downloads">⬇️ Downloads</a></li>
+                    <hr class="dashes">
+                    <li><a href="#installation-video">📽 Video Tutorial</a></li>
+                    <li><a href="#installation-apks">📥 Installing APKs</a></li>
+                    <li><a href="#installation-shizuku">🔓 Root Access Setup</a></li>
+                    <li><a href="#installation-obb">🚚 Moving OBB file</a></li>
+                    <hr class="dashes">
+                    <li><a href="#launch">🥳 Launching Echo VR</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+
+    <main>
+        <section id="prerequisites">
+            <h2>📋 Prerequisites</h2>
+            <ul>
+                <li>Quest 2 or Quest 3 headset</li>
+                <li>Developer mode enabled
+                    <details>
+                        <summary>How to enable Developer mode</summary>
+                        <ol>
+                            <li>Go to <a href="https://dashboard.oculus.com/organizations/create/" target="_blank">this page</a> and create a company, the name doesn't matter!</li>
+                            <li>In the Quest app, go to Settings > Your Headset > Developer Mode</li>
+                            <li>Toggle Developer Mode on</li>
+                        </ol>
+                    </details>
+                </li>
+                <li>Join <a href="https://discord.gg/echo-vr-lounge" target="_blank">Echo VR Lounge Discord</a>
+                    <p> This server manages your account. Don't leave it after joining!</p>
+                </li>
+                <li>You don't need a computer for this installation!</li>
+            </ul>
+        </section>
+
+        <section id="downloads">
+            <h2>⬇️ Downloads</h2>
+            <h3>Utility Apps</h3>
+            <ul>
+                <li><a href="/APK/ZArchiver.apk" download>ZArchiver</a> - For file management and APK installation</li>
+                <li><a href="/APK/EvolveLauncher.apk" download>Evolve Launcher</a> - To access Android Settings and launch Echo</li>
+                <li><a href="/APK/Shizuku.apk" download>Shizuku</a> - For root access</li>
+            </ul>
+            <h3>Echo VR Files</h3>
+            <ul>
+                <li><a href="https://docs.google.com/uc?export=download&id=1mgK3w4yZUXkO1g-5TQBtZWfJxfVVcQSL" target="_blank">EchoQuest.zip</a> - Contains Echo VR APK and OBB files</li>
+                <li>If you've never owned Echo before, join <a href="https://discord.gg/xF9hf6N2vY" target="_blank">this additional Discord server</a>, react to the message, and use the APK from the DM you receive. You'll still need the OBB file from the ZIP above!</li>
+            </ul>
+            <p></p>
+        </section>
+
+        <section>
+            <h2 id="installation-video">📽 Video Tutorial</h2>
+            <p>This is going to be updated soon next time I reset my Quest (I've done it four times for this community lol), follow the text if you haven't owned it previously instead!</p>
+        <center>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/DZGBRHVuJpE?si=Nsxn36Y-kOQ9iUrw" allow="autoplay" allowfullscreen frameBorder="0"></iframe>
             </div>
-        <div class="iframe-container">
-            <iframe src="https://drive.google.com/file/d/1BnVW2sHH2Ix0YVUpVDhsBZXciGtBfI0i/preview" allow="autoplay" allowfullscreen frameBorder="0"></iframe>
+        </center>
+        </section>
+    
+        <section id="installation-apks">
+            <h2>📥 Installing APKs</h2>
+            <p>You can skip this if you already have an installation method and just install the APKS :3</p>
+            Or follow <a href="https://youtu.be/tvOfS1wUsvw?si=cdF2ROAD6RAep1CF&t=63" target="_blank">this guide</a> (sorry about the quality I couldn't find any better ones)
+            <ol>
+                <li>Download <a href="https://www.meta.com/en-gb/experiences/mobile-vr-station/3887008398005125/" target="_blank">Mobile VR Station</a> from the Quest store and open it</li>
+                <li>Click on “Configuration Wizard” > “Show All Options” > “Configure Scoped Storage”</li>
+                <li>Click on “Step 1: Request Access”</li>
+                <li>At the top, click on “Quest 2”, or in other words go to the base directory</li>
+                <img src="MVSDIR.jpg" style="width:60%;">
+                <li>Click on “Downloads”</li>
+                <li>Click on the enlarge icon <span class="material-symbols-outlined">zoom_out_map</span> on all the APKS (including the Echo VR APK) then Continue and Install - clicking open doesn’t do anything!</li>
+            </ol>
+            
+            <p><i>If the screen just dims, the buttons are still there! Try clicking about to find it yourself, and look at where I click in the <a href="#installation-video">video</a>!</i></p>
+        </section>
+        
+        <section id="installation-shizuku">
+            <h2>🔓 Enabling a second developer mode and using Shizuku to get root access</h2>
+            <ol>
+                <li>Open Evolve Launcher</li>
+                <li>Click on the bottom right button, then click on "Device Settings"</li>
+                <li>Scroll down to About Phone, then spam “Build Number” the bottom until you become a developer!</li>
+                <li>Go back and click on “System” then “Developer Options”.</li
+                <li>Turn on USB Debugging if it’s off, then turn on Wireless Debugging below it and click on the text.</li>
+                <li>Put this tab into split screen and open Shizuku</li>
+                <li>Click on “Pair” in the wireless option, then enter the code on the second screen after clicking on add new device.</li>
+                <li>You’re now able to access root files! Try to keep both these apps open (although don't worry if it's a pain, it's not the end of the world if they get minimised, just don't click the X!) and move on to the next step :)</li>
+            </ol>
+        </section>
+        
+        <section id="installation-obb">
+            <h2>🚚 Move the OBB File</h2>
+            <ol>
+                <li>Open ZArchiver while keeping Shizuku open and click on settings at the top right, then ROOT, then click on the first option and set it to “Shizuku”. Turn on all the toggles after that!</li>
+                <li>Go to your Downloads in ZArchiver while keeping everything open and find the zipped file, then extract it into your downloads.</li>
+    
+                <li>
+                    <ul>
+                        <p>If you previously owned Echo:</p>
+                        <li>Go into your newly created folder and install the Echo APK by clicking on it then install.</li>
+                        <p>If you haven't previously owned Echo:</p>
+                        <li><p>Install the APK you downloaded <a href="#downloads">at the beginning</a> then go into the created folder</p></li>
+                    </ul>
+                </li>
+                <li>Once it's done installing, hold down on the OBB file and click copy</li>
+                <li>Click on the top file named ".." and go back to the directory where Downloads is, then navigate to “Android” > “obb”</li>
+                <li>A prompt should pop up in Shizuku, click on Allow, then click on "obb" in ZArchiver again.</li>
+                <li>Go to “com.readyatdawn.r15” and click on the paste button in the bottom right (even if it says access denied)</li>
+                <i>If you can't find it, create it yourself!</i>
+                <li>You should have succesfully installed Echo VR!</li>
+            </ol>
+        </section>
+    
+        <section id="launch">
+            <h2>🥳 Launch Echo VR</h2> 
+            Launch Echo VR from Evolve Launcher (or the main apps, it's just easier and less risky :3)
+            <p><b>DO NOT CLICK ON “Restore”!!!!</b></p>
+            <p><i>(you'll have to start from <a href="#installation-apks">here</a> again!)</i></p>
+            Once you load in:
+            <ol>
+                <li>Go to the Echo VR Discord server</li>
+                <li>Go to <b>#command-central</b></li>
+                <li>Type <b>/link</b> and click on the command that shows up (if you're on a Quest, click off and back on the textbox), then enter your code!</li>
+            </ol>
+    
+            <h1>Welcome to Echo, have fun! Please be kind 😊</h1>
+            
+            <p><i>If it crashes for you, try force quitting it, by either holding down on Echo in Evolve Launcher, then click the info <span class="material-symbols-outlined">info</span> button, then “Force Quit” or restarting your quest. If it continues crashing, try <a href="#installation-obb">moving the OBB file</a> again!</i></p>
+        </section>
+    
+        <footer>
+            <hr style="border: 3px solid #cf97c6; border-radius: 20px;">
+            <h2>👵 Old stuff ignore this</h2>
+            <ul>
+                <li><a href="/APK/Activity Launcher_2.0.0.apk" download>Activity Launcher</a> - to open the Android Settings</li>
+                Open Android Launcher
+                <p>
+                Scroll down until you find "Settings", if you have Roblox installed, it should be directly below it. Not “Android System”!
+                <p>
+                <li>Click on it, and press the first item in the list, then "Launch Activity"</li>
+            	<p>
+                <li><a href="/APK/ZArchiver_1.0.9.apk" download>ZArchiver</a></li>
+                <li><a href="https://raw.githubusercontent.com/Fox595676/Fox595676.github.io/aba42b6471ca450ef777e5278719affb8f75fa37/APK/ActivityLauncher_2.0.0.apk" download>Download Activity Launcher APK</a></li>
+                <li><a href="https://archive.org/details/echo-vr-v-4987566-apk-obb-quest-2">Echo VR - the most important part! Download the APK file, or copy the torrent link and add it in FDM</a></li>
+                <li><a href="https://www.freedownloadmanager.org/download-fdm-for-android.htm">FDM x64 - optional, to download the torrent file instead to if you’re Australian and have shitty internet</a></li>
+                <li><a href="https://drive.google.com/file/d/1yjC3D4TTelqOiZFTmVR311vM8Rr9mc9z/view?usp=drivesdk" target="_blank">Echo VR files</a></li>
+            </ul>
+            <i>The videos are outdated, the links now download directly and the guide looks vastly different, but all the steps should be pretty much the same.
+            
+            <div class="iframe-wrapper">
+                <div class="iframe-container">
+                    <iframe src="https://drive.google.com/file/d/1y07ZWd6Nz5bIrucVLDkV5W-8xF4GwxjS/preview" allow="autoplay" allowfullscreen frameBorder="0"></iframe>
+                </div>
+            <div class="iframe-container">
+                <iframe src="https://drive.google.com/file/d/1BnVW2sHH2Ix0YVUpVDhsBZXciGtBfI0i/preview" allow="autoplay" allowfullscreen frameBorder="0"></iframe>
+            </div>
+            </div>
+            
+        <p>They're also quite bodged, I messed up and let the browser close therefore losing my Echo ZIP download, hence the split recording.
+        <p>Leave it running to let it download completely to continue!</i>  
+        <hr>
+            <p><a href="coolsite/home.html">Cringey old website that used to be on this domain that now has broken CSS lol</a></p>
+        </footer>
+        
+        </main>
         </div>
-        </div>
-        
-    <p>They're also quite bodged, I messed up and let the browser close therefore losing my Echo ZIP download, hence the split recording.
-    <p>Leave it running to let it download completely to continue!</i></p>
-        
-        
-        <hr class="dashed">
-        <hr class="dotted">
-        <hr class="solid">
-        <hr class="rounded">
-        <a href="coolsite/home.html">Cringey old website that used to be on this domain that now has broken CSS lol</a>
-    </footer>
-</body>
+    </body>
 </html>
