@@ -1,9 +1,0 @@
-Tables:
-	<table>	Defines a table
-	<th>	Defines a header cell in a table
-	<tr>	Defines a row in a table
-	<td>	Defines a cell in a table
-	<caption>	Defines a table caption
-
-Text-Shadow:
-	text-shadow: h-shadow v-shadow blur-radius color|none|initial|inherit;
