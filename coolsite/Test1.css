@@ -11,13 +11,8 @@ body {
 	font-family: AovelSansRounded;
 	color: white;
 	font-size: 30px;
-	text-align: left;
-    background-color: #0a0e12;
+	text-align: center;
 }
-
-mgl {
-    margin-left: 30px;
-    }
 
 center {
 	text-align: center;
@@ -45,31 +40,6 @@ fancy {
 dim {
 	filter: brightness(40%);
 }
-
-
-/* Dashed border */
-hr.dashed {
-  border-top: 3px dashed #bbb;
-}
-
-/* Dotted border */
-hr.dotted {
-  border-top: 3px dotted #bbb;
-}
-
-/* Solid border */
-hr.solid {
-  border-top: 3px solid #bbb;
-}
-
-/* Rounded border */
-hr.rounded {
-  border-top: 8px solid #bbb;
-  border-radius: 5px;
-}
-
-
-/* All the COLOURSS ehheheh */
 
 R {
 	color: red;
@@ -108,6 +78,15 @@ Bl {
 }
 
 
+
+
+
+
+
+
+
+
+
 /*	Classes	*/
 
 .shakey:hover {
@@ -129,19 +108,6 @@ Bl {
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-.groovy:hover {
-	animation: groovy 0.5s;
-	animation-iteration-count: infinite;
-}
-
-@keyframes groovy {
-  0% { transform: translate(0px, 1px); }
-  25% { transform: translate(20px, -1px); }
-  50% { transform: translate(0px, 1px); }
-  75% { transform: translate(-20px, -1px); }
-  100% { transform: translate(0px, 1px); }
-}
-
 /* ChatGPT wrote this bit and I spent half an hour trying to achieve this effect. I feel useless. */
 
 .sizeup {
@@ -150,11 +116,7 @@ Bl {
 }
 
 .sizeup:hover {
-  transform: scale(110%); /* Scale on hover */
-}
-
-.flash:hover {
-  color:green
+  transform: scale(125%); /* Scale on hover */
 }
 
 
