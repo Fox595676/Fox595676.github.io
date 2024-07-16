@@ -1,0 +1,108 @@
+/* Main */
+html {
+	scroll-padding-top: 20px; /* This made me weirdly happy to see it working for some reason */
+}
+
+body {
+ 	font-family: monospace;
+	/*font-family: sans-serif;*/
+	color: white;
+	font-size: 16px;
+
+	margin: 0;
+	padding: 0.85vw;
+
+	background-image: url("vrc3.png");
+	background-repeat:no-repeat;
+	background-attachment: fixed;
+	background-color: #000000;
+	background-position: 90%;
+	background-blend-mode: mix;
+	background-size:contain;
+}
+
+/* Tile */
+.tile-container {
+    width: 450%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5vw;
+}
+
+
+.tile {
+    position: relative;
+    border-radius: 15px;
+    
+    transition: transform 0.3s ease;
+    
+    display: inline-block;
+    overflow: hidden;
+
+    font-size: 14px;
+}
+
+.tile img {
+    display: block;
+    /* width: 400px; */
+    
+    width: 250px;
+    height: auto;
+    
+    transition: transform 0.3s ease;
+}
+
+.tile:hover img {
+    transform: scale(1.05);
+    filter: brightness(70%);
+}
+
+.tile:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    content: attr(data-title);
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 14px;
+    
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.tile:hover:after {
+    opacity: 1;
+}
+
+
+
+
+/* Extras */
+.neobutton {
+    width:88px;
+    height:31px;
+}
+
+
+
+/* Unused */
+header, section, footer {
+	max-width: 20vw;
+}
+
+
+a {
+	color: #8a8a8a;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	font-size: 101%;
+}
+
+/*  #B667AB */
