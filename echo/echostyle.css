@@ -1,0 +1,145 @@
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 20;
+  vertical-align: middle;
+  position: relative;
+  font-size: 1.2em;
+}
+
+html {
+    scroll-padding-top: 20px; /* This made me weirdly happy to see it working for some reason */
+}
+
+body {
+  font-family: sans-serif;
+  color: white;
+  font-size: 18px;
+  background-color: #0a0e12;
+  margin: 0;
+  padding: 20px;
+}
+
+header, section, footer {
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  color: #cf97c6;
+}
+
+ul, ol {
+  padding-left: 20px;
+}
+
+a {
+  color: #B667AB;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+hr {
+  border: 1px solid #bbb;
+}
+
+hr.dashes {
+  width:80%;
+  border: 1px dashed #cf97c6;
+}
+
+p.i {
+  font-style: italic;
+}
+
+/* Claude did this part!! */
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+/* #progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1px;
+    background-color: #cf97c6;
+    width: 0%;
+    z-index: 1000;
+    transition: width 0.2s ease-out;
+} */
+
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 250px;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+    margin-right: 30px;
+}
+
+.content {
+    flex: 1;
+    max-width: 800px;
+}
+
+#toc {
+    background-color: #1a1e22;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#toc h2 {
+    margin-top: 0;
+}
+
+#toc ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#toc li {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        position: static;
+        margin-bottom: 30px;
+    }
+}
