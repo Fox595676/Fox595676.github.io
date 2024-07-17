@@ -11,14 +11,6 @@ body {
 
 	margin: 0;
 	padding: 0.85vw;
-
-	background-image: url("vrc3.png");
-	background-repeat:no-repeat;
-	background-attachment: fixed;
-	background-color: #000000;
-	background-position: 90%;
-	background-blend-mode: mix;
-	background-size:contain;
 }
 
 /* Tile */
