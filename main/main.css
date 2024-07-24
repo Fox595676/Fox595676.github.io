@@ -17,14 +17,18 @@ body {
 	padding: 0.85vw;
 }
 
+a {
+    text-decoration: none;
+    color: gray;
+}
+
 /* Tile */
 .tile-container {
-    width: 450%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5vw;
 }
-
 
 .tile {
     position: relative;
@@ -74,31 +78,45 @@ body {
     opacity: 1;
 }
 
+/* Neobuttons */
 
-
-
-/* Extras */
 .neobutton {
-    width:88px;
-    height:31px;
+    display: inline;
+    font-size: 80%;
+    position: relative;
 }
 
-
-
-/* Unused */
-header, section, footer {
-	max-width: 20vw;
+.neobutton img {
+    width: 88px;
+    height: 31px;
 }
 
-
-a {
-	color: #8a8a8a;
-	text-decoration: none;
+.neobutton a {
+    position: relative;
+    display: inline-block;
+    --tooltip-bg-color: gray; /* (I didn't know you could do variables this changes so much :sob:) */
+    --tooltip-fg-color: white;
+}
+    /* I spent SO LONG making this work */
+.neobutton a::after {
+    content: attr(data-tooltip);
+    visibility: hidden;
+    background-color: var(--tooltip-bg-color);
+    color: var(--tooltip-fg-color);
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: -25%; 
+    left: 50%;
+    margin-left: -25%;
+    white-space: nowrap;
+    pointer-events: none;
 }
 
-a:hover {
-	text-decoration: underline;
-	font-size: 101%;
+.neobutton a[data-tooltip]:not([data-tooltip=""]):hover::after {
+    visibility: visible;
+    opacity: 1;
 }
-
-/*  #B667AB */
+    
