@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="main/main.css">
-	<link rel="icon" type="image/x-icon" href="main/oldpfphighresbgrounded.png">
+	<link rel="icon" type="image/x-icon" href="main/mainpfprounded.png">
     	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     
 	<title>Fox's Kitchen Cupboard</title>
@@ -47,26 +47,49 @@ body {
 				<a href="https://utopiaweb.org/" target="_blank" class="tile" data-title="Utopia Proxy"><img src="main/space.png"></a>
 			</div>
 	</section>
-	
+
 	<section id="neobuttons">
+		
+		<!-- No, I don't know JS (yet), yes I used GPT ❤❤❤❤ -->
+
+		<script>
+		    document.addEventListener('DOMContentLoaded', function() {
+		        document.querySelectorAll('.neobutton a').forEach(function(element) {
+		            var bgColor = element.getAttribute('data-bg');
+		            var fgColor = element.getAttribute('data-fg');
+		            if (bgColor) {
+		                element.style.setProperty('--tooltip-bg-color', bgColor);
+		            }
+		            if (fgColor) {
+		                element.style.setProperty('--tooltip-fg-color', fgColor);
+		            }
+		        });
+		    });
+		</script>
+
 		<h2>Buttons!</h2>
-		<p style="font-size:70%;">My bad ones</p>	
-		<a href="echo"><img src="buttons/echo.gif" class="neobutton"></a>
-		<a href="https://hello.vrchat.com/" target="_blank"><img src="buttons/vrchat.gif" class="neobutton"></a>
-		<a href="https://www.linuxmint.com/rel_vanessa_xfce_whatsnew.php" target="_blank"><img src="buttons/mint.gif" class="neobutton"></a>
-		<a href="https://vrc.group/QUEST.4261" target="_blank"><img src="buttons/ewwquest.gif" class="neobutton"></a>
-		<p style="font-size:70%;">Clickies</p>
-		<a href="https://multimc.org/" target="_blank"><img src="buttons/minecraft.gif" class="neobutton"></a>
-		<a href="https://cyber.dabamos.de/88x31/" target="_blank"><img src="buttons/88by31.gif" class="neobutton"></a>
-		<a href="https://notepad-plus-plus.org/" target="_blank"><img src="buttons/notepadpp.gif" class="neobutton"></a>
-		<a href="https://store.steampowered.com/app/400/Portal/" target="_blank"><img src="buttons/portal.png" class="neobutton"></a>
-		<p style="font-size:70%;">Showies</p>	
-		<img src="buttons/piracy.gif" class="neobutton">
-		<img src="buttons/linuxnow.gif" class="neobutton">
+		<div class="neobutton">
+			<p>My (very) bad ones</p>
+			<a href="echo"><img src="buttons/echo.gif"></a>
+			<a href="https://hello.vrchat.com/" target="_blank"><img src="buttons/vrchat.gif"></a>
+			<a href="https://www.linuxmint.com/rel_vanessa_xfce_whatsnew.php" target="_blank"><img src="buttons/mint.gif"></a>
+			<a href="https://vrc.group/QUEST.4261" target="_blank"><img src="buttons/ewwquest.gif"></a>
+			<p>Friendsies</p>
+			<a href="https://omy986.github.io/" data-tooltip="omy986" data-bg="yellow" data-fg="blue"><img src="buttons/learnhtml.gif"></a>
+			<p>Clickies</p>
+			<a href="https://multimc.org/" target="_blank"><img src="buttons/minecraft.gif"></a>
+			<a href="https://cyber.dabamos.de/88x31/" target="_blank"><img src="buttons/88by31.gif"></a>
+			<a href="https://notepad-plus-plus.org/" target="_blank"><img src="buttons/notepadpp.gif"></a>
+			<a href="https://store.steampowered.com/app/400/Portal/" target="_blank"><img src="buttons/portal.png"></a>
+			<a href="https://wiby.org/"><img src="buttons/wiby.gif"></a>
+			<p>Peeple cool sites</p>
+			<a href="https://corvidae.digital/"><img src="buttons/corvidae.gif"></a>
+			<a href="https://sneexy.pages.gay/"><img src="buttons/sneexy.png"></a>
+			<p>Showies</p>
+			<img src="buttons/piracy.gif">
+			<img src="buttons/linuxnow.gif">
+		</div>
     </section>
-
-
-
 
 <div style="text-align:right">
 <a href="https://cd5k.net/tau/">&tau;</a>
