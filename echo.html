@@ -13,14 +13,14 @@
     </script>
     
     <!-- Primary Meta Tags -->
-    <meta name="title" content="Echo VR Standalone Install Guide" />
-    <meta name="description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest above v62!" />
+    <meta name="title" content="Echo VR Standalone Install Guide">
+    <meta name="description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest above v62!">
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://fox595676.com/echo" />
-    <meta property="og:title" content="Echo VR Standalone Install Guide" />
-    <meta property="og:description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest above v62!" />
-    <meta property="og:image" content="echo/thumbnail.png" />
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fox595676.com/echo">
+    <meta property="og:title" content="Echo VR Standalone Install Guide">
+    <meta property="og:description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest above v62!">
+    <meta property="og:image" content="echo/thumbnail.png">
     <!-- Meta Tags Generated with https://metatags.io -->
 
     <meta charset="UTF-8">
@@ -45,9 +45,11 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
  -->
+
+ <!-- Just to clarify, I do not know JS, and I've asked ChatGPT to make this. I intend to rewrite it myself as well as learn JavaScript soon! -->
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
-        import { getDatabase, ref, set, onValue, update } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+        import { getDatabase, ref, set, get, onValue, runTransaction } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
 
         document.addEventListener('DOMContentLoaded', () => {
             console.log("Document loaded, initializing Firebase...");
@@ -83,11 +85,30 @@
                 }
             }
 
+            function initializeCounter() {
+                const counterRef = ref(database, 'counter');
+                get(counterRef).then((snapshot) => {
+                    if (!snapshot.exists()) {
+                        set(counterRef, 0).then(() => {
+                            console.log("Counter node initialized to 0");
+                        }).catch((error) => {
+                            console.error("Error initializing counter:", error);
+                        });
+                    }
+                }).catch((error) => {
+                    console.error("Error checking counter node:", error);
+                });
+            }
+
             function increaseCounter() {
                 const counterRef = ref(database, 'counter');
-                set(counterRef, (prevValue) => (prevValue || 0) + 1)
-                    .then(() => console.log("Counter increased"))
-                    .catch((error) => console.error("Error increasing counter:", error));
+                runTransaction(counterRef, (currentValue) => {
+                    return (currentValue || 0) + 1;
+                }).then(() => {
+                    console.log("Counter increased");
+                }).catch((error) => {
+                    console.error("Error increasing counter:", error);
+                });
             }
 
             function displayCounter() {
@@ -113,11 +134,10 @@
                 console.log('User is not on a Quest headset');
             }
 
+            initializeCounter();
             displayCounter();
         });
     </script>
-
-
 
     <meta name="keywords" content="Echo VR, Quest, Standalone">
     <meta name="author" content="Fox595676">
