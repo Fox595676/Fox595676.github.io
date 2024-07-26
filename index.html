@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<script src="script.js"></script>
 	<link rel="stylesheet" href="main/main.css">
 	<link rel="icon" type="image/x-icon" href="main/oldpfphighresbgrounded.png">
     	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -59,7 +60,7 @@
 	<section id="neobuttons">
 		
 		<!-- No, I don't know JS (yet), yes I used GPT ❤❤❤❤ -->
-
+<!-- 
 		<script>
 		    document.addEventListener('DOMContentLoaded', function() {
 		        document.querySelectorAll('.neobutton a').forEach(function(element) {
@@ -73,7 +74,7 @@
 		            }
 		        });
 		    });
-		</script>
+		</script> -->
 
 		<h2>Buttons!</h2>
 		<div class="neobutton">
@@ -120,120 +121,118 @@
 
 
 	<!-- WIP!!111!! -->
+		<style>
+		    #chat-container {
+		        width: 300px;
+		        height: 400px;
+		        border: 8px solid dimgray;
+		        background-color: #49454F;
+		        padding: 10px;
+		        color: white;
+		        display: flex;
+		        flex-direction: column;
+		    }
 
-	<style>
-	    #chat-container {
-	        width: 300px;
-	        height: 400px;
-	        border: 8px solid dimgray;
-	        background-color: #49454F;
-	        padding: 10px;
-	        color: white;
-	        display: flex;
-	        flex-direction: column;
-	    }
+		    .input-row-container {
+		        display: flex;
+		        flex-wrap: wrap;
+		    }
+		    
+		    .input-row {
+		        display: flex;
+		        align-items: center;
+		        width: 100%;
+		        margin-bottom: 5px;
+		    }
+		    
+		    .username-input {
+		        min-width: 50px;
+		        flex: 1;
+		    }
 
-	    .input-row-container {
-	        display: flex;
-	        flex-wrap: wrap;
-	    }
-	    
-	    .input-row {
-	        display: flex;
-	        align-items: center;
-	        width: 100%;
-	        margin-bottom: 5px;
-	    }
-	    
-	    .username-input {
-	        min-width: 50px;
-	        flex: 1;
-	    }
+		    .color-buttons {
+		        display: flex;
+		        flex-wrap: wrap;
+		        gap: 4.2px;
+		    }
 
-	    .color-buttons {
-	        display: flex;
-	        flex-wrap: wrap;
-	        gap: 4.2px;
-	    }
+		    .color-button {
+		        width: 20px;
+		        height: 20px;
+		        border: none;
+		        cursor: pointer;
+		    }
+		    .messages-container {
+		        flex-grow: 1;
+		        overflow-y: auto;
+		        margin: 10px 0;
+		        background-color: #3D3A41;
+		    }
+		    .message-box {
+		        border-top: 1px solid white;
+		        padding-top: 10px;
+		        display: flex;
+		        align-items: center;
+		    }
+		    .username, .message {
+		        flex-grow: 1;
+		        margin-left: 5px;
+		    }
 
-	    .color-button {
-	        width: 20px;
-	        height: 20px;
-	        border: none;
-	        cursor: pointer;
-	    }
-	    .messages-container {
-	        flex-grow: 1;
-	        overflow-y: auto;
-	        margin: 10px 0;
-	        background-color: #3D3A41;
-	    }
-	    .message-box {
-	        border-top: 1px solid white;
-	        padding-top: 10px;
-	        display: flex;
-	        align-items: center;
-	    }
-	    .username, .message {
-	        flex-grow: 1;
-	        margin-left: 5px;
-	    }
+		    label {
+		        white-space: nowrap;
+		    }
+		</style>
 
-	    label {
-	        white-space: nowrap;
-	    }
-	</style>
+		<div id="chat-container">
+			<p><b style="color: pink;">Broken and not working (yet)!!</b></p>
+		    <div class="input-row-container">
+		        <div class="input-row">
+		            <label for="username">username:</label>
+		            <input class="username-input" type="text" id="username" name="username" autocomplete="given-name">
+		        </div>
+		        <div class="input-row">
+		            <label>colour:</label>
+		            <div class="color-buttons">
+		                <button class="color-button" style="background-color: red;"></button>
+		                <button class="color-button" style="background-color: orange;"></button>
+		                <button class="color-button" style="background-color: yellow;"></button>
+		                <button class="color-button" style="background-color: green;"></button>
+		                <button class="color-button" style="background-color: blue;"></button>
+		                <button class="color-button" style="background-color: indigo;"></button>
+		                <button class="color-button" style="background-color: violet;"></button>
+		                <button class="color-button" style="background-color: pink;"></button>
+		                <button class="color-button" style="background-color: white;"></button>
+		                <button class="color-button" style="background-color: black;"></button>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="messages-container">
+		        <!-- Messages will be added here -->
+		    </div>
+		    <div class="message-box">
+		        <label for="message" id="usernameLabel">User</label>
+		        <input class="message" type="text" id="message" name="message">
+		        <button for="message" name="sendmessage"></button>
+		    </div>
+		</div>
 
-	<div id="chat-container">
-		<p><b style="color: pink;">Broken and not working (yet)!!</b></p>
-	    <div class="input-row-container">
-	        <div class="input-row">
-	            <label for="username">username:</label>
-	            <input class="username-input" type="text" id="username" name="username" autocomplete="given-name">
-	        </div>
-	        <div class="input-row">
-	            <label>colour:</label>
-	            <div class="color-buttons">
-	                <button class="color-button" style="background-color: red;"></button>
-	                <button class="color-button" style="background-color: orange;"></button>
-	                <button class="color-button" style="background-color: yellow;"></button>
-	                <button class="color-button" style="background-color: green;"></button>
-	                <button class="color-button" style="background-color: blue;"></button>
-	                <button class="color-button" style="background-color: indigo;"></button>
-	                <button class="color-button" style="background-color: violet;"></button>
-	                <button class="color-button" style="background-color: pink;"></button>
-	                <button class="color-button" style="background-color: white;"></button>
-	                <button class="color-button" style="background-color: black;"></button>
-	            </div>
-	        </div>
-	    </div>
-	    <div class="messages-container">
-	        <!-- Messages will be added here -->
-	    </div>
-	    <div class="message-box">
-	        <label for="message" id="usernameLabel">User</label>
-	        <input class="message" type="text" id="message" name="message">
-	        <button for="message" name="sendmessage"></button>
-	    </div>
-	</div>
+		<script>
+		    const usernameInput = document.getElementById('username');
+		    const messageBoxLabel = document.getElementById('usernameLabel');
+		    const colorButtons = document.querySelectorAll('.color-button');
 
-	<script>
-	    const usernameInput = document.getElementById('username');
-	    const messageBoxLabel = document.getElementById('usernameLabel');
-	    const colorButtons = document.querySelectorAll('.color-button');
+		    usernameInput.addEventListener('input', function() {
+		        messageBoxLabel.textContent = this.value;
+		    });
 
-	    usernameInput.addEventListener('input', function() {
-	        messageBoxLabel.textContent = this.value;
-	    });
-
-	    colorButtons.forEach(button => {
-	        button.addEventListener('click', function() {
-	            const color = this.style.backgroundColor;
-	            messageBoxLabel.style.color = color;
-	        });
-	    });
-	</script>
-
+		    colorButtons.forEach(button => {
+		        button.addEventListener('click', function() {
+		            const color = this.style.backgroundColor;
+		            messageBoxLabel.style.color = color;
+		        });
+		    });
+		</script>
 	<!-- WIP!!11!!!1! -->
 
 	<div style="text-align:right">

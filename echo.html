@@ -26,10 +26,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="script.js"></script>
     <link rel="stylesheet" href="echo/echostyle.css">
     <link rel="icon" type="image/x-icon" href="echo/echo.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
+
     <meta name="keywords" content="Echo VR, Quest, Standalone">
     <meta name="author" content="Fox595676">
     <title>Echo VR Installation Guide</title>
@@ -37,55 +41,8 @@
 
 <body id="top"> <!-- I figured out going to the top without JS :3 -->
 
-
-  <style>
-        #indicator {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: red; /* Default to red */
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            function isQuestBrowser() {
-                const userAgent = navigator.userAgent;
-                return /Quest( 2| Pro| 3)?/.test(userAgent);
-            }
-
-            function updateIndicator(isQuest) {
-                const indicator = document.getElementById('indicator');
-                if (isQuest) {
-                    indicator.style.backgroundColor = 'green';
-                } else {
-                    indicator.style.backgroundColor = 'red';
-                }
-            }
-
-            function increaseCounter() {
-                // You can implement your counter logic here, for example:
-                fetch('/increase-counter', { method: 'POST' });
-            }
-
-            const onQuest = isQuestBrowser();
-            updateIndicator(onQuest);
-            if (onQuest) {
-                console.log('User is on a Quest headset');
-                increaseCounter();
-            } else {
-                console.log('User is not on a Quest headset');
-            }
-        });
-    </script>
-<div id="indicator"></div>
-
-
-
-
-
+<div id="indicator">
+</div>
 
     <!-- I decided to remove it it's a bit unnecessary lol -->
     <!-- <div id="progress-bar"></div> -->
@@ -93,7 +50,7 @@
 <a href="https://fox595676.com/" style="position: absolute; top: 0; left: 0; padding: 10px; text-decoration: none;"><span class="material-symbols-outlined">arrow_left</span> Back to main site</a>
 
     <header style="text-align:center;">
-        <p>Go to this website on your Quest!</p>
+        <p>Go to this website on your Quest! Questies since 26/7/24: <span id="counter-display">0</span></p>
         <hr>
         <h2>Echo VR v63+ Installation Guide</h2>
    </header>
