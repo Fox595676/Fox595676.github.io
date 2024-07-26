@@ -24,7 +24,6 @@ a {
 
 /* Tile */
 .tile-container {
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5vw;
@@ -44,10 +43,9 @@ a {
 
 .tile img {
     display: block;
-    /* width: 400px; */
-    
+    object-fit: cover;
     width: 250px;
-    height: auto;
+    height: 140px;
     
     transition: transform 0.3s ease;
 }

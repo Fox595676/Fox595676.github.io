@@ -34,7 +34,58 @@
     <meta name="author" content="Fox595676">
     <title>Echo VR Installation Guide</title>
 </head>
+
 <body id="top"> <!-- I figured out going to the top without JS :3 -->
+
+
+  <style>
+        #indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: red; /* Default to red */
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function isQuestBrowser() {
+                const userAgent = navigator.userAgent;
+                return /Quest( 2| Pro| 3)?/.test(userAgent);
+            }
+
+            function updateIndicator(isQuest) {
+                const indicator = document.getElementById('indicator');
+                if (isQuest) {
+                    indicator.style.backgroundColor = 'green';
+                } else {
+                    indicator.style.backgroundColor = 'red';
+                }
+            }
+
+            function increaseCounter() {
+                // You can implement your counter logic here, for example:
+                fetch('/increase-counter', { method: 'POST' });
+            }
+
+            const onQuest = isQuestBrowser();
+            updateIndicator(onQuest);
+            if (onQuest) {
+                console.log('User is on a Quest headset');
+                increaseCounter();
+            } else {
+                console.log('User is not on a Quest headset');
+            }
+        });
+    </script>
+<div id="indicator"></div>
+
+
+
+
+
 
     <!-- I decided to remove it it's a bit unnecessary lol -->
     <!-- <div id="progress-bar"></div> -->
