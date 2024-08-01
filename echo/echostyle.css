@@ -43,6 +43,11 @@ ul, ol {
   padding-left: 20px;
 }
 
+li {
+  padding-top: 0em;
+  padding-bottom: 0.5em;
+}
+
 a {
   color: #B667AB;
   text-decoration: none;
@@ -62,8 +67,18 @@ hr.dashes {
   border: 1px dashed #cf97c6;
 }
 
-p.i {
-  font-style: italic;
+summary {
+  cursor: pointer;
+}
+
+summary:hover {
+  text-decoration: underline;
+}
+
+.contenttext a{
+  display: block;
+  padding-bottom: 3px;
+  padding-top: 3px;
 }
 
 /* Claude did this part!! */
@@ -115,23 +130,30 @@ p.i {
     max-width: 800px;
 }
 
+#indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red; /* Default to red */
+}
+
 #toc {
     background-color: #1a1e22;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 #toc h2 {
     margin-top: 0;
 }
 
-#toc ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-#toc li {
-    margin-bottom: 10px;
+/* tysm Anonymous_Hooman! */
+#toc>* {
+  margin: 0.5rem auto;
+  display: block;
 }
 
 @media (max-width: 1024px) {
