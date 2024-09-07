@@ -14,7 +14,7 @@
 	<!-- End Google tag (gtag.js) -->
 	
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fox595676.com/echo">
+    <meta property="og:url" content="https://fox595676.com/vr/echo/install">
 	
 	<!-- Title -->
 	<title>Echo VR Installation Guide</title>
@@ -24,13 +24,14 @@
 	<!-- Description -->
     <meta property="og:description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest including above v62!">
 	<meta name="description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest  including above v62!">
-    <meta property="og:image" content="echo/thumbnail.png">
+    <meta property="og:image" content="resources/thumbnail.png">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="echo/echostyle.css">
-    <link rel="icon" type="image/x-icon" href="echo/echo.png">
+    <link rel="stylesheet" href="echo.css">
+    <link rel="JavaScript" href="echo.js">
+    <link rel="icon" type="image/x-icon" href="resources/echo.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 
 <!-- 
@@ -40,7 +41,7 @@
 
  <!-- Just to clarify, I do not know JS, and I've asked ChatGPT to make this. I intend to rewrite it myself as well as learn JavaScript soon! -->
 
-    <script type="module">
+   <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
         import { getDatabase, ref, set, get, onValue, runTransaction } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
 
@@ -147,7 +148,7 @@
         <div style="position: absolute; top: 0; right: 0; transform: translateX(-25px); padding: 10px;"><span id="counter-display"><img src="resources/loading_white.svg" style="display: block;"></span></div>
         <div id="indicator"></div>
     
-        <a href="https://fox595676.com/" style="position: absolute; top: 0; left: 0; padding: 10px; text-decoration: none;"><span class="material-symbols-outlined">arrow_left</span> Back to main site</a>
+        <a href="../guides" style="position: absolute; top: 0; left: 0; padding: 10px; text-decoration: none;"><span class="material-symbols-outlined">arrow_left</span> Back to VR Guides</a>
     </header>
 
     <header style="text-align:center;">
@@ -178,7 +179,7 @@
                     <hr class="dashes">
 		            
                     <em style="font-size: 80%; color: gray;">This site uses analytics to improve customer support.</em></li>
-                    <a href="echo/privacy-policy" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Privacy Policy'});">🔒 Privacy Policy</a>
+                    <a href="privacy-policy" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Privacy Policy'});">🔒 Privacy Policy</a>
                 </div>
             </nav>
         </aside>
@@ -216,7 +217,7 @@
                 </li>
                 <li>💻 You don't need a computer for this installation!</li>
                 <p>But - if you do have a computer, I highly recommend using Marcel's installer, as it's much quicker and less complicated.
-                <a href="marcelecho.html" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Marcel Installer'});">You can find how to use it here!</a></p>
+                <a href="https://radianz.wixsite.com/echo-help/quest-installer" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Marcel Installer'});">You can find how to use it here!</a></p>
             </ul>
         </section>
 
@@ -224,9 +225,9 @@
             <h2>⬇️ Downloads</h2>
             <h3>Applications</h3>
             <ul>
-                <li><a href="files/ZArchiver.apk" download onclick="gtag('event', 'download', {'event_category': 'APK', 'event_label': 'ZArchiver'});">ZArchiver</a></li>
-                <li><a href="files/EvolveLauncher.apk" download onclick="gtag('event', 'download', {'event_category': 'APK', 'event_label': 'Evolve Launcher'});">Evolve Launcher</a></li>
-                <li><a href="files/Shizuku.apk" download onclick="gtag('event', 'download', {'event_category': 'APK', 'event_label': 'Shizuku'});">Shizuku</a></li>
+                <li><a href="../../apk/ZArchiver.apk" download onclick="gtag('event', 'download', {'event_category': 'APK', 'event_label': 'ZArchiver'});">ZArchiver</a></li>
+                <li><a href="../../apk/EvolveLauncher.apk" download onclick="gtag('event', 'download', {'event_category': 'APK', 'event_label': 'Evolve Launcher'});">Evolve Launcher</a></li>
+                <li><a href="../../apk/Shizuku.apk" download onclick="gtag('event', 'download', {'event_category': 'APK', 'event_label': 'Shizuku'});">Shizuku</a></li>
             </ul>
             
             <h3>Echo VR obb</h3>
@@ -239,7 +240,7 @@
             <h3>If you <strong style="color: green;">did</strong> previously own Echo</h3>
             <ul>
             <li>
-                <a href="files/Echo_patched.apk" download onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'APK'});">Echo_patched.apk</a> - the apk file for Echo
+                <a href="../../apk/Echo_patched.apk" download onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'APK'});">Echo_patched.apk</a> - the apk file for Echo
                 <!-- <a href="https://echovr.s3.eu-west-2.amazonaws.com/EchoQuest.zip" download onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'ZIP'});">EchoQuest.zip</a> - Contains Echo VR APK and OBB files
                 <br><em style="font-size: 80%;">(Alternate Marcel link) <a href="https://echo.marceldomain.de:6969/ready-at-dawn-echo-arena.zip" onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'BackupZIP3'});">ready-at-dawn-echo-arena.zip</a></em>
                 <br><em style="font-size: 80%;">(Alternate Xero link) <a href="https://my.folderfort.com/drive/s/AzJvfk6MP63MIW5Jrp78WfoDphcYSw" onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'BackupZIP4'});">ready-at-dawn-echo-arena.zip</a></em>
@@ -260,9 +261,9 @@
             <ol>
                 <li>Log in to Discord on your Quest</li>
                 <li>Join <a href="https://discord.gg/prHMrDNzYJ" target="_blank" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Patcher Server'});">this additional Discord server</a>, react to the Quest message, and download it from the DM you receive</li>
-                <img src="echo/questie.png" style="width:10%;">
+                <img src="resources/questie.png" style="width:10%;">
                 <p>If you get a 404 error, remove your reaction on the server, then react again!</p>
-                <img src="echo/404.png" style="width:20%;">
+                <img src="resources/404.png" style="width:20%;">
             </ol>
             </ul>
         </section>
@@ -291,7 +292,7 @@
                 <li>Click on “Configuration Wizard” > “Show All Options” > “Configure Scoped Storage”</li>
                 <li>Click on “Step 1: Request Access” <strong>(ignore that the button below is faded out!)</strong></li>
                 <li>At the top, click on the base directory</li>
-                <img src="echo/MVSDIR.jpg" style="width:20em;">
+                <img src="resources/MVSDIR.jpg" style="width:20em;">
                 <li>Click on “Downloads”</li>
                 <li>Click on the enlarge icon <span class="material-symbols-outlined">zoom_out_map</span> on all the APKS then Continue and Install - clicking open doesn’t do anything!</li>
                 <li>Once they're all installed, click the X at the top right to close MVS</li>
@@ -381,18 +382,18 @@
 			<h3>You may get a prompt that says Open, Restore or Cancel.</h3>
             <h3>Click on 'Open', <em>never restore!</em> If Open doesn't exist, click on Cancel and restart your headset until Open shows up.</h3>
             <h3 style="text-decoration: underline;">(Basically, NEVER CLICK ON 'Restore'!!!!)</h3>
-            <p><img src="echo/restoreNO.jpg" style="width: 40%;"></p>
+            <p><img src="resources/restoreNO.jpg" style="width: 40%;"></p>
             <em>(or else, you'll have to go all the way back to <a href="#installation-apks">Installing APKs</a>)</em>
         </section>
 
         <section id="login">
             <h2>🔗 Linking your headset</h2>
             <strong>Once you log in, you will see a "Login failed" screen with a <strong style="color: darkcyan;">code</strong></strong>.
-            <p><img src="echo/linkheadsetannotated.jpg" style="width:80%;"></p>
+            <p><img src="resources/linkheadsetannotated.jpg" style="width:80%;"></p>
             <ol>
                 <li>Go to <a href="https://discord.com/channels/779349159852769310/1227795372244729926">#command-central</a> in the Echo VR Lounge</li>
                 <li>Type <strong>/link</strong> and click on the command that shows up (if you're on a Quest, click off and back on the textbox), then enter your <strong style="color: darkcyan;">code</strong>!</li>
-                <p><img src="echo/canibeanymoreclear.gif" style="width:45%;"></p>
+                <p><img src="resources/canibeanymoreclear.gif" style="width:45%;"></p>
                 <li>Once it's successfully linked, restart Echo and hit play!</li>
                 <!-- <p style="font-size: 70%;"><em>(or if you're weird like me, you can click "Quit", then "Back" and then go to "Settings", then "Back" again to go straight in)</em></p> -->
                 </ol>
@@ -413,47 +414,8 @@
             </div>
 
         </section>
-        <footer>
-            <details>
-            <summary>
-            <hr class="thick"></summary>
 
-            <h2>👵 Old stuff ignore this</h2>
-            <ul>
-                <li><a href="echo/APK/Activity Launcher_2.0.0.apk" download>Activity Launcher</a> - to open the Android Settings</li>
-                <p>Open Android Launcher</p>
-                
-                <p>Scroll down until you find "Settings", if you have Roblox installed, it should be directly below it. Not “Android System”!</p>
-
-                <li>Click on it, and press the first item in the list, then "Launch Activity"</li>
-            	
-                <li><a href="echo/APK/ZArchiver_1.0.9.apk" download>ZArchiver</a></li>
-                <li><a href="https://raw.githubusercontent.com/Fox595676/Fox595676.github.io/aba42b6471ca450ef777e5278719affb8f75fa37/APK/ActivityLauncher_2.0.0.apk" download>Download Activity Launcher APK</a></li>
-                <li><a href="https://archive.org/details/echo-vr-v-4987566-apk-obb-quest-2">Echo VR - the most important part! Download the APK file, or copy the torrent link and add it in FDM</a></li>
-                <li><a href="https://www.freedownloadmanager.org/download-fdm-for-android.htm">FDM x64 - optional, to download the torrent file instead if you’re Australian and have shitty internet</a></li>
-                <li><a href="https://drive.google.com/file/d/1yjC3D4TTelqOiZFTmVR311vM8Rr9mc9z/view?usp=drivesdk" target="_blank">Echo VR files</a></li>
-            </ul>
-            <em>The videos are outdated, the links now download directly and the guide looks vastly different, but all the steps should be pretty much the same.
-            
-            <div class="iframe-wrapper">
-                <div class="iframe-container">
-                    <iframe src="https://drive.google.com/file/d/1y07ZWd6Nz5bIrucVLDkV5W-8xF4GwxjS/preview" allow="autoplay" allowfullscreen frameBorder="0"></iframe>
-                </div>
-            <div class="iframe-container">
-                <iframe src="https://drive.google.com/file/d/1BnVW2sHH2Ix0YVUpVDhsBZXciGtBfI0i/preview" allow="autoplay" allowfullscreen frameBorder="0"></iframe>
-            </div>
-            </div>
-            
-            <p>They're also quite bodged, I messed up and let the browser close therefore losing my Echo ZIP download, hence the split recording.</p>
-            <p>Leave it running to let it download completely to continue!</p>
-            </em>
-            <hr>
-
-            </details>
-            <p><a href="coolsite/Test.html">Cringey old website that used to be on this domain that now has broken CSS lol</a></p>
-        </footer>
-        
-        <footer><em>This site uses analytics to improve customer support. Find out more in my <a href="echo/privacy-policy">Privacy Policy</a>.</em></footer>
+        <footer><em>This site uses analytics to improve customer support. Find out more in my <a href="vr/echo/privacy-policy">Privacy Policy</a>.</em></footer>
         
         </main>
         </div>

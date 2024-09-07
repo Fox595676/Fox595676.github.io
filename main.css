@@ -1,0 +1,143 @@
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 20;
+  vertical-align: middle;
+  position: relative;
+  font-size: 1.2em;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-padding-top: 20px; /* This made me weirdly happy to see it working for some reason */
+}
+
+body {
+  font-family: monospace;
+  /*font-family: sans-serif;*/
+  color: white;
+  font-size: 16px;
+  margin: 0;
+  padding: 0.85em;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+}
+
+hr {
+  width: 80%
+}
+
+/* Tile */
+  .tile-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5vw;
+}
+
+.tile {
+  position: relative;
+  border-radius: 15px;
+
+  transition: transform 0.3s ease;
+
+  display: inline-block;
+  overflow: hidden;
+
+  font-size: 14px;
+}
+
+.tile img {
+  display: block;
+  object-fit: cover;
+  width: 250px;
+  height: 140px;
+
+  transition: transform 0.3s ease;
+}
+
+.tile:hover img {
+  transform: scale(1.05);
+  filter: brightness(70%);
+}
+
+.tile:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  content: attr(data-title);
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 14px;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tile:hover:after {
+  opacity: 1;
+}
+
+/* Neobuttons */
+
+.neobutton {
+  display: inline;
+  font-size: 80%;
+  position: relative;
+}
+
+.neobutton img {
+  width: 88px;
+  height: 31px;
+}
+
+.neobutton a {
+  position: relative;
+  display: inline-block;
+  --tooltip-bg-color: gray; /* (I didn't know you could do variables this changes so much :sob:) */
+  --tooltip-fg-color: white;
+}
+/* I spent SO LONG making this work */
+.neobutton a::after {
+  visibility: hidden;
+  content: attr(data-tooltip);
+  background-color: var(--tooltip-bg-color);
+  color: var(--tooltip-fg-color);
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -25%;
+  z-index: 1;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.neobutton a[data-tooltip]:not([data-tooltip=""]):hover::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Indicator */
+#indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red; /* Default to red */
+}
