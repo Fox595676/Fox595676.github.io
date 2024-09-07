@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fox595676.com/echoparties">
+	
+	<!-- Title -->
+	<title>Echo VR Parties And Privates</title>
+    <meta property="og:title" content="Echo VR Parties And Privates">
+	<meta name="title" content="Echo VR Parties And Privates">
+	
+	<!-- Description -->
+    <meta property="og:description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest including above v62!">
+	<meta name="description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest  including above v62!">
+    <meta property="og:image" content="echo/thumbnail.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="echo/echostyle.css">
+    <link rel="icon" type="image/x-icon" href="echo/echo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+        import { getDatabase, ref, set, get, onValue, runTransaction } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Document loaded, initializing Firebase...");
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyAirJ3nWPASwoDY29lbNFGjTCRxwBW2qos",
+                authDomain: "echo-vr-b9ebe.firebaseapp.com",
+                databaseURL: "https://echo-vr-b9ebe-default-rtdb.firebaseio.com",
+                projectId: "echo-vr-b9ebe",
+                storageBucket: "echo-vr-b9ebe.appspot.com",
+                messagingSenderId: "501299409537",
+                appId: "1:501299409537:web:ec63d21335cdb2a5921380",
+                measurementId: "G-4F2VC90750"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const database = getDatabase(app);
+
+            function isQuestBrowser() {
+                const userAgent = navigator.userAgent;
+                console.log("User agent:", userAgent);
+                return /Quest( 2| Pro| 3)?/.test(userAgent);
+            }
+
+            function updateIndicator(isQuest) {
+                const indicator = document.getElementById('indicator');
+                if (indicator) {
+                    indicator.style.backgroundColor = isQuest ? 'green' : 'red';
+                    console.log("Indicator updated to", isQuest ? 'green' : 'red', "(Quest)");
+                } else {
+                    console.error("Indicator element not found");
+                }
+            }
+
+            function initializeCounter() {
+                const counterRef = ref(database, 'counter');
+                get(counterRef).then((snapshot) => {
+                    if (!snapshot.exists()) {
+                        set(counterRef, 0).then(() => {
+                            console.log("Counter node initialized to 0");
+                        }).catch((error) => {
+                            console.error("Error initializing counter:", error);
+                        });
+                    }
+                }).catch((error) => {
+                    console.error("Error checking counter node:", error);
+                });
+            }
+
+            function increaseCounter() {
+                const counterRef = ref(database, 'counter');
+                runTransaction(counterRef, (currentValue) => {
+                    return (currentValue || 0) + 1;
+                }).then(() => {
+                    console.log("Counter increased");
+                }).catch((error) => {
+                    console.error("Error increasing counter:", error);
+                });
+            }
+
+            function displayCounter() {
+                const counterRef = ref(database, 'counter');
+                onValue(counterRef, (snapshot) => {
+                    const counterValue = snapshot.val();
+                    const display = document.getElementById('counter-display');
+                    if (display) {
+                        display.innerText = counterValue || 0;
+                        console.log("Counter value updated:", counterValue);
+                    } else {
+                        console.error("Counter display element not found");
+                    }
+                });
+            }
+
+            const onQuest = isQuestBrowser();
+            updateIndicator(onQuest);
+            if (onQuest) {
+                console.log('User is on a Quest headset');
+                increaseCounter();
+            } else {
+                console.log('User is not on a Quest headset');
+            }
+
+            initializeCounter();
+            displayCounter();
+        });
+    </script>
+
+    <meta name="keywords" content="Echo VR, Quest, Standalone">
+    <meta name="author" content="Fox595676">
+    
+</head>
+
+<body id="top">
+    <header>
+        <!-- Questies that have loaded this website, since 26/7/2024 -->
+        <div style="position: absolute; top: 0; right: 0; transform: translateX(-25px); padding: 10px;"><span id="counter-display"><img src="resources/loading_white.svg" style="display: block;"></span></div>
+        <div id="indicator"></div>
+    
+        <a href="https://fox595676.com/" style="position: absolute; top: 0; left: 0; padding: 10px; text-decoration: none;"><span class="material-symbols-outlined">arrow_left</span> Back to main site</a>
+    </header>
+
+    <header style="text-align:center;">
+        <h2>How to set up private games and parties</h2>
+   </header>
+
+    <div class="container" style="text-align:left;">
+        <aside class="sidebar" style="text-align:center;">
+            <nav id="toc">
+                <h2><a href="#top"><span class="material-symbols-outlined">arrow_upward</span></a>Contents</h2>
+                <div class="contenttext">
+                    <a href="#api">👩‍💻 API Access</a>
+                    <hr class="dashes">
+
+                    <a href="#spark">🎆 Spark Privates</a>
+                        <p>
+                            <a href="#spark-quest">Install on Quest</a>
+                            <a href="#spark-mobile">Install on Phone</a>
+                        </p>
+                        <a href="#spark-setup">Setup</a>
+                        <a href="#spark-create">Create</a>
+                        <a href="#spark-join">Join</a>
+                        <hr class="dashes">
+                        <a href="#discord">💫 Discord Parties</a>
+                        <hr class="dashes">
+                        <a href="#taxi">🚖 Taxi Parties</a>
+                </div>
+            </nav>
+        </aside>
+
+    <main>
+        <section id="api">
+            <h3>👩‍💻 API Access (do this first!)</h3>
+            To set up parties in Echo, you must first enable API Access.
+            <ol>
+                <li>Start by opening Echo on your Quest.</li>
+                <p><a href="echo">Don't have Echo yet?</a></p>
+                <li>Open settings at the left side of the (pause if you're not in the menus) screen</li>
+                <li>Click through the arrows until you get to the Net Status screen</li>
+                <li>Turn on "Enable API Access"</li>
+                <p><img src="echo/apiaccess.jpeg" style="width:35em;"></p>
+            </ol>
+        </section>
+
+        <hr class="thick">
+
+        <section id="spark">
+            <h2>🎆 Spark Privates</h2>
+            <p>Using Spark, you can create private games, where you can invite others with a link.</p>
+            <p>This method cannot be used to join public games with another person!</p>
+            <h3>How to install Spark</h3>
+            There are two methods to using Spark Mini, either natively, or via your Phone. Pick the option that suits you best!<br>
+            If you choose mobile, make sure you're on the same network as your Quest.
+
+            <h4 id="spark-quest">Natively on your Quest</h4>
+            Make sure you have developer mode on!
+            <details>
+                <summary>How to enable Developer mode</summary>
+                <ol style="color: grey;">
+                    <li>Go to <a href="https://dashboard.oculus.com/organizations/create/" target="_blank">this page</a> and create a company, the name doesn't matter!</li>
+                    <li>In the Quest app, go to Settings > Your Headset > Developer Mode</li>
+                    <li>Toggle Developer Mode on</li>
+                </ol>
+            </details>
+            <ol>
+                <li>Download the <a href="https://api.ignitevr.gg/spark-mini.apk" download>Spark Mini APK</a> on your Quest</li>
+                <li>If you haven't got it installed already, install  <a href="https://www.meta.com/en-gb/experiences/mobile-vr-station/3887008398005125/">Mobile VR Station</a> and open it</li>
+                <li>Navigate to “Configuration Wizard” > “Show All Options” > “Configure Scoped Storage”</li>
+                <li>Click on “Step 1: Request Access” <strong>(ignore that the button below is faded out!)</strong></li>
+                <li>At the top, click on the base directory</li>
+                <img src="echo/MVSDIR.jpg" style="width:20em;">
+                <li>Click on “Downloads”</li>
+                <li>Click on the enlarge icon <span class="material-symbols-outlined">zoom_out_map</span> on the Spark Mini APK then Continue and Install - clicking open doesn’t do anything!</li>
+                <li>Once it's installed, click the X at the top right to close MVS</li>
+            </ol>
+            <h4 id="spark-mobile">Using your phone</h4>
+            <li>Install <a href="https://ignitevr.gg/spark-mini/">Spark Mini</a> by clicking on the respective download and open it!</li>
+            <a href="https://apps.apple.com/us/app/spark-mini/id1575027911"><img src="resources/appstore.png" style="width: 12em;"></a>
+            <a href="https://play.google.com/store/apps/details?id=gg.ignitevr.spark_mini"><img src="resources/googleplay.png" style="width: 12em;"></a>
+
+            <h3 id="spark-setup">How to set up Spark</h3>
+            <ol>
+                <li>Launch Spark Mini (from unkown sources in your App Library on your Quest)</li>
+                <li>Click on "Find Quest IP" while you're in the lobby</li>
+            </ol>
+            <h3 id="spark-create">How to create private matches</h3>
+            <ol>
+                <li>Click on the small button at the top left / right of the console (Arena or Combat) in the lobby, then click private at the top right, then Start</li>
+                <li>Once you load in, in Spark, copy the link and share it with friends</li>
+            </ol>
+            <h3 id="spark-join">How to join private matches</h3>
+            <ol>
+                <li>Copy the link you received</li>
+                <li>While you’re in the lobby, click on the second tab at the bottom, “Share Match”, and paste it, then click “JOIN MATCH”</li>
+            </ol>
+        </section>
+
+
+        <section id="discord">
+            <h2>💫 Discord Parties</h2>
+            WIP
+        </section>
+
+
+        <section id="taxi">
+            <h2>🚖 Taxi Parties</h2>
+            WIP
+        </section>
+    </body>
+</html>

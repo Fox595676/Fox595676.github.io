@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fox595676.com/echo">
+	
+	<!-- Title -->
+	<title>Echo VR Installation Guide</title>
+    <meta property="og:title" content="Echo VR Standalone Install Guide">
+	<meta name="title" content="Echo VR Standalone Install Guide">
+	
+	<!-- Description -->
+    <meta property="og:description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest including above v62!">
+	<meta name="description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest  including above v62!">
+    <meta property="og:image" content="echo/thumbnail.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="echo/echostyle.css">
+    <link rel="icon" type="image/x-icon" href="echo/echo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+<!-- 
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
+ -->
+
+ <!-- Just to clarify, I do not know JS, and I've asked ChatGPT to make this. I intend to rewrite it myself as well as learn JavaScript soon! -->
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+        import { getDatabase, ref, set, get, onValue, runTransaction } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Document loaded, initializing Firebase...");
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyAirJ3nWPASwoDY29lbNFGjTCRxwBW2qos",
+                authDomain: "echo-vr-b9ebe.firebaseapp.com",
+                databaseURL: "https://echo-vr-b9ebe-default-rtdb.firebaseio.com",
+                projectId: "echo-vr-b9ebe",
+                storageBucket: "echo-vr-b9ebe.appspot.com",
+                messagingSenderId: "501299409537",
+                appId: "1:501299409537:web:ec63d21335cdb2a5921380",
+                measurementId: "G-4F2VC90750"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const database = getDatabase(app);
+
+            function isQuestBrowser() {
+                const userAgent = navigator.userAgent;
+                console.log("User agent:", userAgent);
+                return /Quest( 2| Pro| 3)?/.test(userAgent);
+            }
+
+            function updateIndicator(isQuest) {
+                const indicator = document.getElementById('indicator');
+                if (indicator) {
+                    indicator.style.backgroundColor = isQuest ? 'green' : 'red';
+                    console.log("Indicator updated to", isQuest ? 'green' : 'red', "(Quest)");
+                } else {
+                    console.error("Indicator element not found");
+                }
+            }
+
+            function initializeCounter() {
+                const counterRef = ref(database, 'counter');
+                get(counterRef).then((snapshot) => {
+                    if (!snapshot.exists()) {
+                        set(counterRef, 0).then(() => {
+                            console.log("Counter node initialized to 0");
+                        }).catch((error) => {
+                            console.error("Error initializing counter:", error);
+                        });
+                    }
+                }).catch((error) => {
+                    console.error("Error checking counter node:", error);
+                });
+            }
+
+            function increaseCounter() {
+                const counterRef = ref(database, 'counter');
+                runTransaction(counterRef, (currentValue) => {
+                    return (currentValue || 0) + 1;
+                }).then(() => {
+                    console.log("Counter increased");
+                }).catch((error) => {
+                    console.error("Error increasing counter:", error);
+                });
+            }
+
+            function displayCounter() {
+                const counterRef = ref(database, 'counter');
+                onValue(counterRef, (snapshot) => {
+                    const counterValue = snapshot.val();
+                    const display = document.getElementById('counter-display');
+                    if (display) {
+                        display.innerText = counterValue || 0;
+                        console.log("Counter value updated:", counterValue);
+                    } else {
+                        console.error("Counter display element not found");
+                    }
+                });
+            }
+
+            const onQuest = isQuestBrowser();
+            updateIndicator(onQuest);
+            if (onQuest) {
+                console.log('User is on a Quest headset');
+                increaseCounter();
+            } else {
+                console.log('User is not on a Quest headset');
+            }
+
+            initializeCounter();
+            displayCounter();
+        });
+    </script>
+
+    <meta name="keywords" content="Echo VR, Quest, Standalone">
+    <meta name="author" content="Fox595676">
+    
+</head>
+
+<body id="top"> <!-- I figured out going to the top without JS :3 -->
+
+    <!-- I decided to remove it it's a bit unnecessary lol -->
+    <!-- <div id="progress-bar"></div> -->
+    
+    <header>
+        <!-- Questies that have loaded this website, since 26/7/2024 -->
+        <div style="position: absolute; top: 0; right: 0; transform: translateX(-25px); padding: 10px;"><span id="counter-display"><img src="resources/loading_white.svg" style="display: block;"></span></div>
+        <div id="indicator"></div>
+    
+        <a href="https://fox595676.com/" style="position: absolute; top: 0; left: 0; padding: 10px; text-decoration: none;"><span class="material-symbols-outlined">arrow_left</span> Back to main site</a>
+    </header>
+
+    <header style="text-align:center;">
+        <p>Go to this website on your Quest!</p>
+        <hr>
+        <h2>Echo VR Tutorials</h2>
+   </header>
+
+    <!-- Sidebar for contents yayy -->
+    <div class="container" style="text-align:left;">
+        <aside class="sidebar" style="text-align:center;">
+            <nav id="toc">
+                <h2><a href="#top"><span class="material-symbols-outlined">arrow_upward</span></a>Contents</h2>
+                <div class="contenttext">
+                    <a href="#prerequisites">📋 Prerequisites</a>
+                    <a href="#downloads">⬇️ Downloads</a>
+                    <hr class="dashes">
+		            
+                    <em style="font-size: 80%; color: gray;">This site uses analytics to improve customer support.</em></li>
+                    <a href="echo/privacy-policy">🔒 Privacy Policy</a>
+                </div>
+            </nav>
+        </aside>
+
+    <main>
+
+
+        <footer style="position: absolute; bottom: 0;">
+            <hr class="thick">
+            <em>This site uses analytics to improve customer support. Find out more in my <a href="echo/privacy-policy">Privacy Policy</a>.</em>
+        </footer>
+        
+        </main>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1J6F4MHKHL"></script>
+	<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-1J6F4MHKHL');
+    </script>
+	<!-- End Google tag (gtag.js) -->
+	
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fox595676.com/echo">
+	
+	<!-- Title -->
+	<title>Echo VR Installation Guide</title>
+    <meta property="og:title" content="Echo VR Standalone Install Guide">
+	<meta name="title" content="Echo VR Standalone Install Guide">
+	
+	<!-- Description -->
+    <meta property="og:description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest including above v62!">
+	<meta name="description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest  including above v62!">
+    <meta property="og:image" content="echo/thumbnail.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="echo/echostyle.css">
+    <link rel="icon" type="image/x-icon" href="echo/echo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+<!-- 
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
+ -->
+
+ <!-- Just to clarify, I do not know JS, and I've asked ChatGPT to make this. I intend to rewrite it myself as well as learn JavaScript soon! -->
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+        import { getDatabase, ref, set, get, onValue, runTransaction } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Document loaded, initializing Firebase...");
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyAirJ3nWPASwoDY29lbNFGjTCRxwBW2qos",
+                authDomain: "echo-vr-b9ebe.firebaseapp.com",
+                databaseURL: "https://echo-vr-b9ebe-default-rtdb.firebaseio.com",
+                projectId: "echo-vr-b9ebe",
+                storageBucket: "echo-vr-b9ebe.appspot.com",
+                messagingSenderId: "501299409537",
+                appId: "1:501299409537:web:ec63d21335cdb2a5921380",
+                measurementId: "G-4F2VC90750"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const database = getDatabase(app);
+
+            function isQuestBrowser() {
+                const userAgent = navigator.userAgent;
+                console.log("User agent:", userAgent);
+                return /Quest( 2| Pro| 3)?/.test(userAgent);
+            }
+
+            function updateIndicator(isQuest) {
+                const indicator = document.getElementById('indicator');
+                if (indicator) {
+                    indicator.style.backgroundColor = isQuest ? 'green' : 'red';
+                    console.log("Indicator updated to", isQuest ? 'green' : 'red', "(Quest)");
+                } else {
+                    console.error("Indicator element not found");
+                }
+            }
+
+            function initializeCounter() {
+                const counterRef = ref(database, 'counter');
+                get(counterRef).then((snapshot) => {
+                    if (!snapshot.exists()) {
+                        set(counterRef, 0).then(() => {
+                            console.log("Counter node initialized to 0");
+                        }).catch((error) => {
+                            console.error("Error initializing counter:", error);
+                        });
+                    }
+                }).catch((error) => {
+                    console.error("Error checking counter node:", error);
+                });
+            }
+
+            function increaseCounter() {
+                const counterRef = ref(database, 'counter');
+                runTransaction(counterRef, (currentValue) => {
+                    return (currentValue || 0) + 1;
+                }).then(() => {
+                    console.log("Counter increased");
+                }).catch((error) => {
+                    console.error("Error increasing counter:", error);
+                });
+            }
+
+            function displayCounter() {
+                const counterRef = ref(database, 'counter');
+                onValue(counterRef, (snapshot) => {
+                    const counterValue = snapshot.val();
+                    const display = document.getElementById('counter-display');
+                    if (display) {
+                        display.innerText = counterValue || 0;
+                        console.log("Counter value updated:", counterValue);
+                    } else {
+                        console.error("Counter display element not found");
+                    }
+                });
+            }
+
+            const onQuest = isQuestBrowser();
+            updateIndicator(onQuest);
+            if (onQuest) {
+                console.log('User is on a Quest headset');
+                increaseCounter();
+            } else {
+                console.log('User is not on a Quest headset');
+            }
+
+            initializeCounter();
+            displayCounter();
+        });
+    </script>
+
+    <meta name="keywords" content="Echo VR, Quest, Standalone">
+    <meta name="author" content="Fox595676">
+    
+</head>
+
+<body id="top"> <!-- I figured out going to the top without JS :3 -->
+
+    <!-- I decided to remove it it's a bit unnecessary lol -->
+    <!-- <div id="progress-bar"></div> -->
+    
+    <header>
+        <!-- Questies that have loaded this website, since 26/7/2024 -->
+        <div style="position: absolute; top: 0; right: 0; transform: translateX(-25px); padding: 10px;"><span id="counter-display"><img src="resources/loading_white.svg" style="display: block;"></span></div>
+        <div id="indicator"></div>
+    
+        <a href="https://fox595676.com/" style="position: absolute; top: 0; left: 0; padding: 10px; text-decoration: none;"><span class="material-symbols-outlined">arrow_left</span> Back to main site</a>
+    </header>
+
+    <header style="text-align:center;">
+        <p>Go to this website on your Quest!</p>
+        <hr>
+        <h2>Echo VR v63+ Installation Guide</h2>
+   </header>
+
+    <!-- Sidebar for contents yayy -->
+    <div class="container" style="text-align:left;">
+        <aside class="sidebar" style="text-align:center;">
+            <nav id="toc">
+                <h2><a href="#top"><span class="material-symbols-outlined">arrow_upward</span></a>Contents</h2>
+                <div class="contenttext">
+                    <a href="#prerequisites" onclick="gtag('event', 'click', {'event_category': 'Navigation', 'event_label': 'Prerequisites'});">📋 Prerequisites</a>
+                    <a href="#downloads" onclick="gtag('event', 'click', {'event_category': 'Navigation', 'event_label': 'Downloads'});">⬇️ Downloads</a>
+                    <hr class="dashes">
+
+                    <a href="#installation-video" onclick="gtag('event', 'click', {'event_category': 'Navigation', 'event_label': 'Video Tutorial'});">📼 Video Tutorial</a>
+                    <a href="#installation-apks" onclick="gtag('event', 'click', {'event_category': 'Navigation', 'event_label': 'Installing APKs'});">📥 Installing APKs</a>
+                    <a href="#installation-shizuku" onclick="gtag('event', 'click', {'event_category': 'Navigation', 'event_label': 'Root Access Setup'});">🔓 Root Access Setup</a>
+                    <a href="#installation-obb" onclick="gtag('event', 'click', {'event_category': 'Navigation', 'event_label': 'Moving OBB file'});">🚚 Moving OBB file</a>
+                    <hr class="dashes">
+                    
+                    <a href="#launch" onclick="gtag('event', 'click', {'event_category': 'Navigation', 'event_label': 'Launching Echo VR'});">🥳 Launching Echo VR</a>
+                    <a href="#login" onclick="gtag('event', 'click', {'event_category': 'Navigation', 'event_label': 'Link your headset'});">🔗 Link your headset</a>
+                    <a href="#troubleshooting" onclick="gtag('event', 'click', {'event_category': 'Navigation', 'event_label': 'Troubleshooting'});">😰 Troubleshooting</a>
+                    <hr class="dashes">
+		            
+                    <em style="font-size: 80%; color: gray;">This site uses analytics to improve customer support.</em></li>
+                    <a href="echo/privacy-policy" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Privacy Policy'});">🔒 Privacy Policy</a>
+                </div>
+            </nav>
+        </aside>
+
+    <main>
+        <section id="prerequisites">
+            <h2>📋 Prerequisites</h2>
+            <ul>
+                <li> 👪 Remove any additional accounts before you begin!</li>
+                    <details>
+                        <summary>
+                            How to remove additional accounts
+                        </summary>
+                            <ol style="color: grey;">
+                                <strong style="color: maroon;">Removing an account from a device will also remove that account's data from the device.</strong>
+                                <li>Select Settings in the top right corner, then select Accounts</li>
+                                <li>Select Remove next to the account you wish to remove, then select Remove again to confirm.</li>
+                            </ol>
+                    </details>
+                <li>🔑 Make sure to turn off your Quest password, you can add it back once you're done
+                <li>🗑️ If you previously owned Echo VR, install it from your library then uninstall it!</li>
+                <li>👓 Quest 2 or Quest 3 headset (Pro + Quest 1 not tested)</li>
+                <li>🕵 Developer mode enabled
+                    <details >
+                        <summary>How to enable Developer mode</summary>
+                        <ol style="color: grey;">
+                            <li>Go to <a href="https://dashboard.oculus.com/organizations/create/" target="_blank" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Create Organisation'});">this page</a> and create a company, the name doesn't matter!</li>
+                            <li>In the Quest app, go to Settings > Your Headset > Developer Mode</li>
+                            <li>Toggle Developer Mode on</li>
+                        </ol>
+                    </details>
+                </li>
+                <li>💫 Join <a href="https://discord.gg/echo-vr-lounge" target="_blank" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Echo VR Lounge'});">Echo VR Lounge Discord</a>
+                    <p> This server manages your account. Don't leave it after joining!</p>
+                </li>
+                <li>💻 You don't need a computer for this installation!</li>
+                <p>But - if you do have a computer, I highly recommend using Marcel's installer, as it's much quicker and less complicated.
+                <a href="marcelecho.html" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Marcel Installer'});">You can find how to use it here!</a></p>
+            </ul>
+        </section>
+
+        <section id="downloads">
+            <h2>⬇️ Downloads</h2>
+            <h3>Applications</h3>
+            <ul>
+                <li><a href="files/ZArchiver.apk" download onclick="gtag('event', 'download', {'event_category': 'APK', 'event_label': 'ZArchiver'});">ZArchiver</a></li>
+                <li><a href="files/EvolveLauncher.apk" download onclick="gtag('event', 'download', {'event_category': 'APK', 'event_label': 'Evolve Launcher'});">Evolve Launcher</a></li>
+                <li><a href="files/Shizuku.apk" download onclick="gtag('event', 'download', {'event_category': 'APK', 'event_label': 'Shizuku'});">Shizuku</a></li>
+            </ul>
+            
+            <h3>Echo VR obb</h3>
+            <ul>
+                <li>
+                    <a href="https://evr.echo.taxi/main.4987566.com.readyatdawn.r15.obb" download onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'OBB'});">..readyatdawn.r15.obb</a> - the obb file for Echo
+                </li>
+            </ul>
+            
+            <h3>If you <strong style="color: green;">did</strong> previously own Echo</h3>
+            <ul>
+            <li>
+                <a href="files/Echo_patched.apk" download onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'APK'});">Echo_patched.apk</a> - the apk file for Echo
+                <!-- <a href="https://echovr.s3.eu-west-2.amazonaws.com/EchoQuest.zip" download onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'ZIP'});">EchoQuest.zip</a> - Contains Echo VR APK and OBB files
+                <br><em style="font-size: 80%;">(Alternate Marcel link) <a href="https://echo.marceldomain.de:6969/ready-at-dawn-echo-arena.zip" onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'BackupZIP3'});">ready-at-dawn-echo-arena.zip</a></em>
+                <br><em style="font-size: 80%;">(Alternate Xero link) <a href="https://my.folderfort.com/drive/s/AzJvfk6MP63MIW5Jrp78WfoDphcYSw" onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'BackupZIP4'});">ready-at-dawn-echo-arena.zip</a></em>
+                <br><em style="font-size: 80%;">(Alternate Drive link #2) <a href="https://docs.google.com/uc?export=download&id=1mgK3w4yZUXkO1g-5TQBtZWfJxfVVcQSL" target="_blank" onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'BackupZIP1'});">EchoQuest.zip</a></em>
+                <br><em style="font-size: 80%;">(Alternate Drive link #3) <a href="https://drive.google.com/file/u/0/d/1yjC3D4TTelqOiZFTmVR311vM8Rr9mc9z/view?usp=sharing&pli=1" target="_blank" onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'BackupZIP'});">EchoQuest2.0</a></em> -->
+            </li>
+            </ul>
+
+            <h3>If you <strong style="color: red;">didn't</strong> previously own Echo</h3>
+            <ul>
+            <!-- <li>
+                <a href="https://echovr.s3.eu-west-2.amazonaws.com/main.4987566.com.readyatdawn.r15.obb" download onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'OBB'});">..readyatdawn.r15.obb</a> - the obb file for Echo
+                <br><em style="font-size: 80%;">(Alternate Drive link #1) <a href="https://docs.google.com/uc?export=download&id=1pkL2yvt9Pq-r_9rodWaLaVriLkuaY30w" target="_blank" onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'BackupOBB'});">..readyatdawn.r15.obb</a></em>
+            </li>
+            <br> -->
+
+            <li>Your own personalised APK</li>
+            <ol>
+                <li>Log in to Discord on your Quest</li>
+                <li>Join <a href="https://discord.gg/prHMrDNzYJ" target="_blank" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Patcher Server'});">this additional Discord server</a>, react to the Quest message, and download it from the DM you receive</li>
+                <img src="echo/questie.png" style="width:10%;">
+                <p>If you get a 404 error, remove your reaction on the server, then react again!</p>
+                <img src="echo/404.png" style="width:20%;">
+            </ol>
+            </ul>
+        </section>
+
+        <details>
+            <summary><h2 >📼 Video Tutorial</h2> Under construction, use the text for now!!</summary>
+            
+        <section id="installation-video">
+            <h3>Do not use this if you <strong style="color: red;">didn't</strong> previously own Echo!</h3>
+            <p>This is going to be updated soon, follow the text if you haven't owned it previously instead!</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/DZGBRHVuJpE?si=Nsxn36Y-kOQ9iUrw" allow="autoplay" allowfullscreen frameBorder="0" enablejsapi></iframe>
+            </div>
+            <ul>
+                <li>Here's the <a href="https://echo.marceldomain.de:6969/ready-at-dawn-echo-arena.zip" download onclick="gtag('event', 'download', {'event_category': 'echofiles', 'event_label': 'ZIP'});">EchoQuest.zip</a> if you want to follow it anyway!</li>
+            </ul>
+        </section>
+        </details>
+
+        <section id="installation-apks">
+            <h2>📥 Installing APKs</h2>
+            <p>You can skip this if you already have an installation method and just install the APKS :3</p>
+            Or follow <a href="https://youtu.be/tvOfS1wUsvw?si=cdF2ROAD6RAep1CF&t=63" target="_blank" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Installing APKs Video'});">this guide</a> (sorry about the quality I couldn't find any better ones)
+            <ol>
+                <li>Download <a href="https://www.meta.com/en-gb/experiences/mobile-vr-station/3887008398005125/" target="_blank" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'MVS'});">Mobile VR Station</a> from the Quest store and open it</li>
+                <li>Click on “Configuration Wizard” > “Show All Options” > “Configure Scoped Storage”</li>
+                <li>Click on “Step 1: Request Access” <strong>(ignore that the button below is faded out!)</strong></li>
+                <li>At the top, click on the base directory</li>
+                <img src="echo/MVSDIR.jpg" style="width:20em;">
+                <li>Click on “Downloads”</li>
+                <li>Click on the enlarge icon <span class="material-symbols-outlined">zoom_out_map</span> on all the APKS then Continue and Install - clicking open doesn’t do anything!</li>
+                <li>Once they're all installed, click the X at the top right to close MVS</li>
+            </ol>
+            
+            <p><em>If the screen just dims, the buttons are still there! Try clicking about to find it yourself, and look at where I click in <a href="#installation-video">the video</a>!</em></p>
+        </section>
+        
+        <section id="installation-shizuku">
+            <h2>🔓 Enabling a second developer mode and using Shizuku to get root access</h2>
+            <ol>
+                <li>Open Evolve Launcher</li>
+                <li>Click on the bottom right button, then click on "Device Settings"</li>
+                <li>Scroll down to About Phone, then spam “Build Number” at the bottom until you become a developer!</li>
+                    <p><em>If you're sent to the previous screen / it doesn't work, turn off your Quest password and restart your headset then try again!</em></p>
+
+                <li>Go to the previous menu and click on “System” then “Developer Options”.</li>
+                <li>Scroll down and turn on USB Debugging if it’s off, then turn on Wireless Debugging below it and click on the text.</li>
+                <li>Put this tab into split screen and open Shizuku</li>
+                    <p><em>To use splitscreen, make sure you're not in an application and you're using the recticle rather than physically touching it!</em></p>
+                <li>Click “Pairing” in Shizuku, then enter the code on the second screen after clicking "Pair device with pairing code" in Evolve.</li>
+                <li>Once they're paired, click Start!</li>
+                <li>You’re now able to access root files! Try to keep Shizuku open (although don't worry if it's a pain, it's not the end of the world if they get minimised, just don't click the X and reopen it!) and move on to the next step :)</li>
+            </ol>
+        </section>
+
+        <section id="installation-obb">
+            <script>
+                function copyObb() {
+                    // Get the text from the span element
+                    var copyText = document.getElementById("obbFolder").textContent;
+        
+                    // Copy the text to the clipboard
+                    navigator.clipboard.writeText(copyText).catch(function(err) {
+                        console.error('Failed to copy text: ', err);
+                    });
+                }
+            </script>
+
+            <h2>🚚 Move the OBB File</h2>
+            <ol>
+                <li>Open ZArchiver while keeping Shizuku open and allow file access</li>
+                <li>Click on settings at the top right, then ROOT, click on the first option and set it to “Shizuku”, then turn on all the toggles after that!</li>
+                
+                <!-- <li>
+                    <br>
+                    <p>If you <strong style="color: green;">did</strong> previously own Echo:</p>
+                    <ol>
+                        <li>Go to your Downloads and find the zip, then extract it by tapping it then clicking "Extract here"</li>
+                        <li>Go into your newly created folder and install <strong style="color: lightgray;">Echo_patched.apk</strong> by clicking it then tapping "Install"</li>
+                    </ol>
+
+                    <p>If you <strong style="color: red;">didn't</strong> previously own Echo:</p>
+                    <ul>
+                        <li><p>Go to your downloads and install your personalised APK by clicking it then tapping "Install"</p></li>
+                    </ul>
+                </li> -->
+
+                <li>
+                    If you couldn't install your APK earlier since it was a ZIP, you can rename it now. Hold down on it and click <span class="material-symbols-outlined">edit</span> "Rename", then change the .zip extension at the end to be .apk
+                    <p><em>Don't press extract!</em></p>
+                </li>
+                <li>Once it's done installing, hold down on the <strong style="color: lightgray;">com.readyatdawn.r15.obb</strong> file and click copy</li>
+                <li>Click on the top file named ".." and go back to your home directory, then navigate to “Android” > “obb”</li>
+
+                <p><em>(Don't use the back button at the top, it will clear your selection)</em></p>
+                
+                <li>A prompt should pop up in Shizuku, click on Allow, then click on "obb" in ZArchiver again.</li>
+
+                <li>
+                    Create the folder "com.readyatdawn.r15", then go inside it and click on the paste button in the bottom right (even if it says access denied)
+                    <p>Make sure to name it <em>exactly</em> <span style="color: aqua;" id="obbFolder">com.readyatdawn.r15</span>
+                        <button onclick="copyObb()">
+                            <span class="material-symbols-outlined">content_paste</span>
+                        </button>, otherwise it won't work!
+                    </p>
+                </li>
+
+                <li>You should have successfully set up Echo VR!</li>
+            </ol>
+        </section>
+
+        <section id="launch">
+            <h2>🥳 Launch Echo VR</h2> 
+            <p>Launch Echo VR from Evolve Launcher</p>
+            
+			<h3>You may get a prompt that says Open, Restore or Cancel.</h3>
+            <h3>Click on 'Open', <em>never restore!</em> If Open doesn't exist, click on Cancel and restart your headset until Open shows up.</h3>
+            <h3 style="text-decoration: underline;">(Basically, NEVER CLICK ON 'Restore'!!!!)</h3>
+            <p><img src="echo/restoreNO.jpg" style="width: 40%;"></p>
+            <em>(or else, you'll have to go all the way back to <a href="#installation-apks">Installing APKs</a>)</em>
+        </section>
+
+        <section id="login">
+            <h2>🔗 Linking your headset</h2>
+            <strong>Once you log in, you will see a "Login failed" screen with a <strong style="color: darkcyan;">code</strong></strong>.
+            <p><img src="echo/linkheadsetannotated.jpg" style="width:80%;"></p>
+            <ol>
+                <li>Go to <a href="https://discord.com/channels/779349159852769310/1227795372244729926">#command-central</a> in the Echo VR Lounge</li>
+                <li>Type <strong>/link</strong> and click on the command that shows up (if you're on a Quest, click off and back on the textbox), then enter your <strong style="color: darkcyan;">code</strong>!</li>
+                <p><img src="echo/canibeanymoreclear.gif" style="width:45%;"></p>
+                <li>Once it's successfully linked, restart Echo and hit play!</li>
+                <!-- <p style="font-size: 70%;"><em>(or if you're weird like me, you can click "Quit", then "Back" and then go to "Settings", then "Back" again to go straight in)</em></p> -->
+                </ol>
+               <p>You can watch Xero's much more in-depth video here :)</p>
+               
+               <div class="video-container">
+                  <iframe src="https://www.youtube.com/embed/icGa3SX1e6k" allow="autoplay" allowfullscreen frameBorder="0" enablejsapi></iframe>
+               </div>
+
+            <h1>Welcome to Echo, have fun! Please be kind 😊</h1>
+
+            <p><em>If it crashes for you, try force quitting it, by either holding down on Echo in Evolve Launcher, then clicking the info <span class="material-symbols-outlined"></span> button, then “Force Quit” or restarting your quest. If it continues crashing, try <a href="#installation-obb">moving the OBB file</a> again, and if it <strong>still</strong> crashes, reinstall the APK and start from the beginning!</em></p>
+
+            <section id="troubleshooting"></section>
+            <h2>😰 Troubleshooting</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/fH4t2gf9P3g" allow="autoplay" allowfullscreen frameBorder="0" enablejsapi></iframe>
+            </div>
+
+        </section>
+        <footer>
+            <details>
+            <summary>
+            <hr class="thick"></summary>
+
+            <h2>👵 Old stuff ignore this</h2>
+            <ul>
+                <li><a href="echo/APK/Activity Launcher_2.0.0.apk" download>Activity Launcher</a> - to open the Android Settings</li>
+                <p>Open Android Launcher</p>
+                
+                <p>Scroll down until you find "Settings", if you have Roblox installed, it should be directly below it. Not “Android System”!</p>
+
+                <li>Click on it, and press the first item in the list, then "Launch Activity"</li>
+            	
+                <li><a href="echo/APK/ZArchiver_1.0.9.apk" download>ZArchiver</a></li>
+                <li><a href="https://raw.githubusercontent.com/Fox595676/Fox595676.github.io/aba42b6471ca450ef777e5278719affb8f75fa37/APK/ActivityLauncher_2.0.0.apk" download>Download Activity Launcher APK</a></li>
+                <li><a href="https://archive.org/details/echo-vr-v-4987566-apk-obb-quest-2">Echo VR - the most important part! Download the APK file, or copy the torrent link and add it in FDM</a></li>
+                <li><a href="https://www.freedownloadmanager.org/download-fdm-for-android.htm">FDM x64 - optional, to download the torrent file instead if you’re Australian and have shitty internet</a></li>
+                <li><a href="https://drive.google.com/file/d/1yjC3D4TTelqOiZFTmVR311vM8Rr9mc9z/view?usp=drivesdk" target="_blank">Echo VR files</a></li>
+            </ul>
+            <em>The videos are outdated, the links now download directly and the guide looks vastly different, but all the steps should be pretty much the same.
+            
+            <div class="iframe-wrapper">
+                <div class="iframe-container">
+                    <iframe src="https://drive.google.com/file/d/1y07ZWd6Nz5bIrucVLDkV5W-8xF4GwxjS/preview" allow="autoplay" allowfullscreen frameBorder="0"></iframe>
+                </div>
+            <div class="iframe-container">
+                <iframe src="https://drive.google.com/file/d/1BnVW2sHH2Ix0YVUpVDhsBZXciGtBfI0i/preview" allow="autoplay" allowfullscreen frameBorder="0"></iframe>
+            </div>
+            </div>
+            
+            <p>They're also quite bodged, I messed up and let the browser close therefore losing my Echo ZIP download, hence the split recording.</p>
+            <p>Leave it running to let it download completely to continue!</p>
+            </em>
+            <hr>
+
+            </details>
+            <p><a href="coolsite/Test.html">Cringey old website that used to be on this domain that now has broken CSS lol</a></p>
+        </footer>
+        
+        <footer><em>This site uses analytics to improve customer support. Find out more in my <a href="echo/privacy-policy">Privacy Policy</a>.</em></footer>
+        
+        </main>
+        </div>
+    </body>
+</html>
