@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fox595676.com/vr/taskbar">
+	
+	<!-- Title -->
+	<title>VR Guides!</title>
+    <meta property="og:title" content="VR Guides!">
+	<meta name="title" content="VR Guides!">
+	
+	<!-- Description -->
+    <meta property="og:description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest including above v62!">
+	<meta name="description" content="This is a guide on how to install Echo VR, completely standalone, on any Quest  including above v62!">
+    <meta property="og:image" content="echo/thumbnail.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" type="image/x-icon" href="quest_thicker_v2.svg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0">
+
+ <!-- Just to clarify, I do not know JS, and I've asked ChatGPT to make this. I intend to rewrite it myself as well as learn JavaScript soon! -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+        import { getDatabase, ref, set, get, onValue, runTransaction } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Document loaded, initializing Firebase...");
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyAirJ3nWPASwoDY29lbNFGjTCRxwBW2qos",
+                authDomain: "echo-vr-b9ebe.firebaseapp.com",
+                databaseURL: "https://echo-vr-b9ebe-default-rtdb.firebaseio.com",
+                projectId: "echo-vr-b9ebe",
+                storageBucket: "echo-vr-b9ebe.appspot.com",
+                messagingSenderId: "501299409537",
+                appId: "1:501299409537:web:ec63d21335cdb2a5921380",
+                measurementId: "G-4F2VC90750"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const database = getDatabase(app);
+
+            function isQuestBrowser() {
+                const userAgent = navigator.userAgent;
+                console.log("User agent:", userAgent);
+                return /Quest( 2| Pro| 3)?/.test(userAgent);
+            }
+
+            function updateIndicator(isQuest) {
+                const indicator = document.getElementById('indicator');
+                if (indicator) {
+                    indicator.style.backgroundColor = isQuest ? 'green' : 'red';
+                    console.log("Indicator updated to", isQuest ? 'green' : 'red', "(Quest)");
+                } else {
+                    console.error("Indicator element not found");
+                }
+            }
+
+            function initializeCounter() {
+                const counterRef = ref(database, 'counter');
+                get(counterRef).then((snapshot) => {
+                    if (!snapshot.exists()) {
+                        set(counterRef, 0).then(() => {
+                            console.log("Counter node initialized to 0");
+                        }).catch((error) => {
+                            console.error("Error initializing counter:", error);
+                        });
+                    }
+                }).catch((error) => {
+                    console.error("Error checking counter node:", error);
+                });
+            }
+
+            function increaseCounter() {
+                const counterRef = ref(database, 'counter');
+                runTransaction(counterRef, (currentValue) => {
+                    return (currentValue || 0) + 1;
+                }).then(() => {
+                    console.log("Counter increased");
+                }).catch((error) => {
+                    console.error("Error increasing counter:", error);
+                });
+            }
+
+            function displayCounter() {
+                const counterRef = ref(database, 'counter');
+                onValue(counterRef, (snapshot) => {
+                    const counterValue = snapshot.val();
+                    const display = document.getElementById('counter-display');
+                    if (display) {
+                        display.innerText = counterValue || 0;
+                        console.log("Counter value updated:", counterValue);
+                    } else {
+                        console.error("Counter display element not found");
+                    }
+                });
+            }
+
+            const onQuest = isQuestBrowser();
+            updateIndicator(onQuest);
+            if (onQuest) {
+                console.log('User is on a Quest headset');
+                increaseCounter();
+            } else {
+                console.log('User is not on a Quest headset');
+            }
+
+            initializeCounter();
+            displayCounter();
+        });
+    </script>
+
+    <meta name="keywords" content="Echo VR, Quest, Standalone">
+    <meta name="author" content="Fox595676">
+    
+</head>
+
+<header>
+    <!-- Questies that have loaded this website, since 26/7/2024 -->
+    <div style="position: absolute; top: 0; right: 0; transform: translateX(-25px); padding: 10px;"><span id="counter-display"><img src="echo/resources/loading_white.svg" style="display: block;"></span></div>
+    <div id="indicator"></div>
+
+    <a href="https://fox595676.com/" style="position: absolute; top: 0; left: 0; padding: 10px; text-decoration: none;"><span class="material-symbols-outlined">arrow_left</span> Back to main site</a>
+</header>
+
+<body id="top">
+    <header style="text-align:center;">
+        <h2>A nerdy girls completely standalone Quest tip collection</h2>
+        The tips here assume you know how to install applications and have developer mode on. If you don't know how, follow the first step below!
+    </header>
+    <main>
+        <section id="sideloading">
+            <h2 style="color: chartreuse;">How to enable developer mode + sideload applications</h2>
+            <ol>
+                <li>Go to <a href="https://dashboard.oculus.com/organizations/create/" target="_blank">this page</a> and create a company, the name doesn't matter!</li>
+                <li>In the Quest app, go to Settings > Your Headset > Developer Mode</li>
+                <li>Toggle Developer Mode on</li>
+            </ol>
+            <ol>
+                <li>To install the application you want, download  <a href="https://www.meta.com/en-gb/experiences/mobile-vr-station/3887008398005125/">Mobile VR Station</a> and open it</li>
+                <li>Navigate to “Configuration Wizard” > “Show All Options” > “Configure Scoped Storage”</li>
+                <li>Click on “Step 1: Request Access” <strong>(ignore that the button below is faded out!)</strong></li>
+                <li>At the top, click on the base directory</li>
+                <img src="echo/resources/MVSDIR.jpg" style="width:20em;">
+                <li>Click on “Downloads”</li>
+                <li>Click on the enlarge icon <span class="material-symbols-outlined">zoom_out_map</span> on the APK you want to use, then Continue and Install</li>
+                <li>Once it's installed, click the X at the top right to close MVS</li>
+            </ol>
+        </section>
+
+        <section id="taskbar">
+            <h2 style="color: blueviolet;">How to remove the Explore and Store items from your taskbar</h2>
+            <p>I haven't yet found a way to remove the People app :(</p>
+            <ol>
+                <li>Download and install <a href="../apk/EvolveLauncher.apk" download>Evolve Launcher</a> onto your Quest</li>
+                <li>Click on the bottom right button that looks like a weird batman thing</li>
+                <li>Click on Device Settings</li>
+                <li>Click on Apps > See all apps</li>
+                <li><strong>To remove the Explore (blue) app</strong>
+                <br>Find Explore and disable it</li>
+                
+                <li><strong>To remove the Store (orange) app</strong>
+                <h3 style="color: red;">WARNING: THIS WILL DELETE ALL OF YOUR INSTALLED APPLICATIONS FROM THE STORE (not sideloaded) IF YOU DO THIS INCORRECTLY - ONLY DO IT IF YOU'RE WILLING TO RISK IT!!</h3>
+                <h4><em>(otherwise, just disable Explore!)</em></h4>
+                Find Store and disable it</li>
+                <br>
+
+                <li>Once these are both done, find ShellEnv and click on Force Stop. Your UI will restart and the apps will be gone from your taskbar - this is like a restart minus all the bad evil parts - DON'T restart</li>
+                <li>To prevent your apps being deleted, repeat steps 1 - 4, find the dropdown titled "Disabled Apps" at the top, then enable Store first, then and Explore if it doesn't automatically get enabled with Store!</li>
+            </ol>
+        </section>
+
+        <section id="snapdrop">
+            <h2 style="color: aqua;">Share images / files / text much quicker back and forth between your Quest and another device</h2>
+            <p>There's this amazing site called Snapdrop - it's super useful! As long as you're on the same network as your Quest, you can send yourself images, apks, strings of text, files etc! You can even access your file system :3</p>
+            <p>You could just use the site on your Quest, but this would only support text and very low quality file sharing from your Quest to another device</p>
+            <ol>
+                <li>Install the <a href="../apk/snapdrop.apk" download>Snapdrop application</a> onto your Quest</li>
+                <li>Visit <a href="https://snapdrop.net">snapdrop.net</a> on another device</li>
+            </ol>
+            <ul>
+                <li>To share files / images, click on the device that shows up, then select what you want to share</li>
+                <li>To share text, for instance a password or API key, hold down / right click on the device then paste what you want</li>
+            </ul>
+        </section>
+
+        <section id="adb">
+            <h2 style="color: gold;">Run ADB commands natively</h2>
+            <p>To run ADB commands on your Quest without a computer (or root access!), you're going need Shizuku and aShellYou.</p>
+            Download the following APKs onto your Quest.
+            <ul>
+                <li><a href="../apk/Shizuku.apk">Shizuku</a></li>
+                <li><a href="https://github.com/DP-Hridayan/aShellYou/releases/latest">aShellYou latest release</a> , download the first APK in the list</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

@@ -28,7 +28,14 @@ body {
 
 a {
   text-decoration: none;
-  color: gray;
+  font-weight:lighter;
+  color: grey;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+a:hover {
+  font-weight: bolder;
+  text-decoration: underline;
 }
 
 hr {
