@@ -153,7 +153,76 @@
 
     <header style="text-align:center;">
         <p>Go to this website on your Quest!</p>
-        <hr>
+        
+        <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const comicButton = document.getElementById("comicbutton");
+
+    // Modular function to style elements
+    function applyStyles(selector, styles) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(function(element) {
+            Object.assign(element.style, styles); // Apply the styles object to each element
+        });
+    }
+
+    // Event listener for the button
+    if (comicButton) {
+        comicButton.addEventListener("click", function() {
+            // Change font, background, and text color for the body
+            applyStyles("body", {
+                fontFamily: "'Comic Sans MS', cursive, sans-serif",
+                backgroundColor: "purple",
+                color: "yellow"
+            });
+
+            // Add rotation and flash effect to <a>, <em>, and <b> elements
+            applyStyles("a, em, b", {
+                color: "red"
+            });
+
+            // Apply underline and rotation to <a> elements only
+            const allLinks = document.querySelectorAll("a");
+            allLinks.forEach(function(link) {
+                link.style.textDecoration = "underline";  // Underline all <a> links
+                link.style.transform = "rotate(-6deg) !important";
+                document.documentElement.style.setProperty('--rotation', 'rotate(-6deg)');
+            });
+
+            // Apply flashing to <a> elements (except TOC links)
+            const nonTocLinks = document.querySelectorAll("body a:not(#toc a)");
+            nonTocLinks.forEach(function(link) {
+                link.classList.add("flashing");  // Flash and rotate non-TOC <a> links
+            });
+
+            // Specifically make <h2> and <h3> elements white
+            applyStyles("h2,h3", {
+                color: "white"
+            });
+
+            // TOC links: Keep red and rotating, but no flashing
+            const tocLinks = document.querySelectorAll("#toc a");
+            tocLinks.forEach(function(link) {
+                link.style.textDecoration = "none";  // No underline for TOC links
+                link.style.color = "red";            // Keep them red
+                link.style.transform = "rotate(-6deg)"; // Ensure TOC links are also rotating
+                link.classList.remove("flashing");   // Prevent flashing on TOC links
+            });
+            
+            console.log("Styles applied");
+        });
+    } else {
+        console.error("comicbutton element not found");
+    }
+});
+
+
+        </script>
+        
+        
+        
+
+        <hr id="comicbutton" style="cursor: pointer;">
         <h2>Echo VR v63+ Installation Guide</h2>
    </header>
 
@@ -295,6 +364,12 @@
                 <img src="resources/MVSDIR.jpg" style="width:20em;">
                 <li>Click on “Downloads”</li>
                 <li>Click on the enlarge icon <span class="material-symbols-outlined">zoom_out_map</span> on all the APKS then Continue and Install - clicking open doesn’t do anything!</li>
+                
+                <h3>If it shows up,</h3>
+                <h3 style="text-decoration: underline; color: red;">(NEVER CLICK ON RESTORE!!!!)</h3>
+                <h3>Click on close instead!!</h3>
+                <p><img src="resources/restoreNO.jpg" style="width: 40%;"></p>
+
                 <li>Once they're all installed, click the X at the top right to close MVS</li>
             </ol>
             
@@ -376,7 +451,6 @@
         <section id="launch">
             <h2>🥳 Launch Echo VR</h2> 
             <p>Launch Echo VR from Evolve Launcher</p>
-            
 			<p>You may get a prompt that says Open, Restore or Cancel.
             <br>Click on "Open", <em>never</em> restore! If Open doesn't exist, click on Cancel and try opening it again.</p>
             <h3 style="text-decoration: underline; color: red;">(Basically, NEVER CLICK ON 'Restore'!!!!)</h3>

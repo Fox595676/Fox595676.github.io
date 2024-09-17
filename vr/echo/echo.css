@@ -27,6 +27,24 @@ body {
   padding: 20px;
 }
 
+
+@keyframes flash {
+  0%, 100% { color: red; }
+  50% { color: transparent; }
+}
+
+.flashing {
+  animation: flash 0.2s step-start infinite;
+  font-weight: bold;
+  font-style: italic;
+  transform: rotate(-6deg); /* Ensure flashing links also rotate */
+  transition: transform 0.5s;
+}
+
+
+
+
+
 header, section, footer {
   margin: 20px auto;
   max-width: 800px;
@@ -56,6 +74,7 @@ li {
 a {
   color: #B667AB;
   text-decoration: none;
+  --rotation: transform: rotate(0deg)
 }
 
 a:hover {
