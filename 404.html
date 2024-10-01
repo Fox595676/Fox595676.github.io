@@ -8,6 +8,10 @@
 	<link rel="icon" type="image/x-icon" href="pfp/oldpfphighresbgrounded.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     
+	<meta property="og:description" content="There must be something here">
+	<meta name="description" content="There must be something here">
+	<meta property="og:image" content="404.png">
+
 	<title>Fox's Kitchen Cupboard</title>
 </head>
 
@@ -28,26 +32,42 @@
 	<a href="fox595676.com" style="position: absolute; top: 0; left: 0; padding: 10px; text-decoration: none;"><span class="material-symbols-outlined">arrow_left</span>..but there isn't.</a>
 
     <!-- Make it begin with 404, display for a second, then do a glitch animation and switch to this -->
+	 <!-- Also, I'm aware that the 404 isn't placed exactly over the other text, but I like zooming in and out and seeing it move!! I DO know how to fix it jtbc >;3 -->
     <h2 style="font-size:7vw;padding-left:5%; max-width:70vw;">There must be something here...</h2>
 	<h2 style="font-size:14vw;padding-left:5%; max-width:70vw; position:absolute; top: -0.3em; color: black; text-shadow: 0vw 0vw 0.2vw aqua;">404</h2>
 
-<blockquote>
-I know how this will end<br>
-Oh I had that dream again<br>
-Where I'd see you underneath<br>
-And you're reaching out for me<br>
-Those words I never meant<br>
-But I had to save a friend<br>
-And if only there was time<br>
-Maybe then I'd make it right
-</blockquote>
-    
-<blockquote>
-And if it gets better<br>
-It's taking forever<br>
-And what's with this weather<br>
-It's not getting better
-</blockquote>
+	<a href="https://www.youtube.com/watch?v=W0WLSzAcVTc" target="_blank">acloudyskye - Relay</a>
+	<p>
+		I know how this will end<br>
+		Oh I had that dream again<br>
+		Where I'd see you underneath<br>
+		And you're reaching out for me<br>
+		Those words I never meant<br>
+		But I had to save a friend<br>
+		And if only there was time<br>
+		Maybe then I'd make it right
+	</p>
+
+	<a href="https://www.youtube.com/watch?v=CQ6amrijRUs" target="_blank">acloudyskye - Rayleigh Scattering</a>
+	<audio id="rayleigh" src="music/rayleighscattering.mp3" preload="auto"></audio>
+	
+	<p style="cursor: pointer;" id="rayplay">
+		And if it gets better<br>
+		It's taking forever<br>
+		And what's with this weather<br>
+		It's not getting better
+	</p>
+	
+	<script>
+		const playButton = document.getElementById('rayplay');
+		const audio = document.getElementById('rayleigh');
+	
+		playButton.addEventListener('click', () => {
+			audio.currentTime = 0; // Restart audio from the beginning
+			audio.play();
+		});
+	</script>
+	
     
 </body>
 </html>
