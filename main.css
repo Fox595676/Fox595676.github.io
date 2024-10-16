@@ -38,6 +38,11 @@ a:hover {
   text-decoration: underline;
 }
 
+a:focus {
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
 hr {
   width: 80%
 }
@@ -75,6 +80,11 @@ hr {
   filter: brightness(70%);
 }
 
+.tile:focus img {
+  transform: scale(1.05);
+  filter: brightness(70%);
+}
+
 .tile:after {
   position: absolute;
   top: 50%;
@@ -93,6 +103,10 @@ hr {
 }
 
 .tile:hover:after {
+  opacity: 1;
+}
+
+.tile:focus:after {
   opacity: 1;
 }
 
