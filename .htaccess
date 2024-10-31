@@ -1,1 +1,2 @@
 ErrorDocument 404 /404
+AddType text/html .html
