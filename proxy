@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="refresh" content="0; URL='https://proxy.avagoosa.com'">
 	<title>Redirect</title>
 	<script>window.location.replace("https://proxy.avagoosa.com");</script>
 </head>
+<body>
+    <p>If you are not redirected, <a href="https://proxy.avagoosa.com">click here</a>.</p>
+</body>
 </html>
