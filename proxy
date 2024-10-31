@@ -2,6 +2,6 @@
 <html lang="en">
 <head>
 	<title>Redirect</title>
-	<script>window.location.replace("proxy.avagoosa.com");</script>
+	<script>window.location.replace("https://proxy.avagoosa.com");</script>
 </head>
 </html>
