@@ -252,8 +252,38 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
             </nav>
         </aside>
+        <style>
+            .legacyWarning {
+                background-color: #f8d7da;
+                color: #721c24;
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+                border: 1px solid #f5c6cb;
+                border-radius: 20px;
+                text-align: center;
+            }
+            .legacyWarning h1 {
+                margin-bottom: .5rem;
+            }
+            .legacyWarning a {
+                color: #721c24;
+                text-decoration: underline;
+            }
+            .legacyWarning img {
+                width: 100%;
+                max-width: 400px;
+                border-radius: 20px;
+            }
+        </style>
 
-    <main>
+        <main>
+            <div class="legacyWarning">
+                <h1>Legacy Notice!</h1>
+                <p>This installation method is lengthy and complex.</p>
+                <p>For a faster and easier installation, please use our new <strong>standalone</strong> installer.</p>
+                <h2><a href="https://echo.avagoosa.com">Go to the Installer</h2>
+                <img src="resources/meow.png"></a>
+            </div>
         <section id="prerequisites">
             <h2>📋 Prerequisites</h2>
             <ul>
