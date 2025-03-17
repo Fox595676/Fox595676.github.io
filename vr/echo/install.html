@@ -140,6 +140,18 @@
 
 <body id="top"> <!-- I figured out going to the top without JS :3 -->
 
+<style>
+    body {
+        background: repeating-linear-gradient(
+            45deg,
+            #0a0e12,
+            #0a0e12 10px,
+            transparent 10px,
+            transparent 20px
+        );
+    }
+</style>
+
     <!-- I decided to remove it it's a bit unnecessary lol -->
     <!-- <div id="progress-bar"></div> -->
     
@@ -261,6 +273,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 border: 1px solid #f5c6cb;
                 border-radius: 20px;
                 text-align: center;
+                position: relative;
             }
             .legacyWarning h1 {
                 margin-bottom: .5rem;
@@ -274,16 +287,77 @@ document.addEventListener("DOMContentLoaded", function() {
                 max-width: 400px;
                 border-radius: 20px;
             }
-        </style>
 
+/* This is clearly a joke */
+/* I'm not sorry, I'm proud of it */
+
+.bubble {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    transform: rotate(30deg);
+    animation: flash 0.5s steps(1, start) infinite/*, wiggle 2s infinite */;
+}
+
+.bubble img {
+    width: 100%;
+    height: 100%;
+    /* animation: growShrink 5s infinite; */
+}
+
+.bubbleText {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+/* Instant Flashing */
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* Grow and shrink every 5s, only lasting 1s */
+@keyframes growShrink {
+    0%, 80% { transform: scale(1); }
+    81% { transform: scale(1.5); }
+    90% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Wiggle every 5s, only lasting 1s, but faster */
+@keyframes wiggle {
+    0%, 100% { transform: rotate(30deg); }
+    25% { transform: rotate(33deg); }
+    50% { transform: rotate(27deg); }
+    75% { transform: rotate(31deg); }
+}
+
+        </style>
+        
         <main>
             <div class="legacyWarning">
-                <h1>Legacy Notice!</h1>
-                <p>This installation method is lengthy and complex.</p>
-                <p>For a faster and easier installation, please use our new <strong>standalone</strong> installer.</p>
-                <h2><a href="https://echo.avagoosa.com">Go to the Installer</h2>
-                <img src="resources/meow.png"></a>
+                <h1>Important Notice!</h1>
+                <p>Please use our new <strong>standalone installer</strong> for a <strong>faster and easier</strong> installation!</p>
+                <p>This method is officially legacy, and will recieve no more updates.</p>
+                <h2><a href="https://echo.avagoosa.com" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Installer'});"><p>Go to the Installer</p><img src="resources/meow.png"></a></h2>
+                <p>To reiterate, this method is <strong>not recommended</strong> and will not be updated.</p>
+                
+                <div class="bubble">
+                    <img src="resources/star1.svg" width="100" height="100">
+                    <div class="bubbleText">now obb free!!!</div>
+                </div>
             </div>
+
+        
         <section id="prerequisites">
             <h2>📋 Prerequisites</h2>
             <ul>
@@ -315,7 +389,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <p> This server manages your account. Don't leave it after joining!</p>
                 </li>
                 <li>💻 You don't need a computer for this installation!</li>
-                <p>But - if you do have a computer, I highly recommend using Marcel's installer, as it's much quicker and less complicated.
+                <p>But - if you do have a computer, I highly recommend using Mia's installer, as it's much quicker and less complicated.
                 <a href="https://radianz.wixsite.com/echo-help/quest-installer" onclick="gtag('event', 'click', {'event_category': 'outclicks', 'event_label': 'Marcel Installer'});">You can find how to use it here!</a></p>
             </ul>
         </section>
